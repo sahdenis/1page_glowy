@@ -34,12 +34,9 @@
         }
         html { scroll-behavior: smooth; }
         .scrollbar-hide::-webkit-scrollbar { display: none; }
-        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-        
         .size-btn.active { background-color: #6366f1; color: white; border-color: #6366f1; }
-        .thumb.active { border-color: #6366f1; opacity: 1; transform: scale(1.05); }
         .thumb { opacity: 0.7; transition: all 0.2s; }
-        .thumb:hover { opacity: 1; }
+        .thumb.active, .thumb:hover { opacity: 1; border-color: #6366f1; transform: scale(1.05); }
     </style>
 </head>
 <body class="font-sans text-gray-700 bg-gray-50">
@@ -54,8 +51,7 @@
             </a>
 
             <div class="flex items-center gap-4">
-                <button onclick="changeLang('ro')" class="font-bold hover:text-glowy transition" id="btn-ro">RO</button>
-                <span class="text-gray-300">|</span>
+                <button onclick="changeLang('ro')" class="font-bold hover:text-glowy transition" id="btn-ro">RO</button> | 
                 <button onclick="changeLang('ru')" class="font-bold text-gray-400 hover:text-glowy transition" id="btn-ru">RU</button>
             </div>
 
@@ -71,16 +67,18 @@
             </button>
         </div>
         <div id="mobMenu" class="hidden md:hidden bg-white border-t p-4 flex flex-col gap-4 shadow-lg absolute w-full">
-            <a href="#about" class="block py-2" onclick="this.parentElement.classList.add('hidden')">Despre noi / О нас</a>
-            <a href="#catalog" class="block py-2" onclick="this.parentElement.classList.add('hidden')">Catalog / Каталог</a>
-            <a href="#delivery" class="block py-2" onclick="this.parentElement.classList.add('hidden')">Livrare / Доставка</a>
-            <a href="#contacts" class="block py-2" onclick="this.parentElement.classList.add('hidden')">Contacte / Контакты</a>
+            <a href="#about" class="block py-2" onclick="this.parentElement.classList.add('hidden')">Despre noi</a>
+            <a href="#catalog" class="block py-2" onclick="this.parentElement.classList.add('hidden')">Catalog</a>
+            <a href="#delivery" class="block py-2" onclick="this.parentElement.classList.add('hidden')">Livrare</a>
+            <a href="#contacts" class="block py-2" onclick="this.parentElement.classList.add('hidden')">Contacte</a>
         </div>
     </header>
 
     <section class="mt-16 relative h-[550px] overflow-hidden group">
         <div class="slide absolute inset-0 bg-gray-900">
-            <img src="https://glowy.md/content/images/40/1440x432e90nn0/20111806146971.webp" alt="Hero" class="w-full h-full object-cover opacity-60">
+            <img src="https://glowy.md/content/images/40/1440x432e90nn0/20111806146971.webp" 
+                 onerror="this.src='https://placehold.co/1920x600/1e1b4b/FFF?text=GLOWY'" 
+                 class="w-full h-full object-cover opacity-60">
             <div class="absolute inset-0 flex items-center justify-center text-center">
                 <div class="text-white px-4 max-w-2xl">
                     <h1 class="text-4xl md:text-6xl font-bold mb-6 glow-text" data-i18n="hero_title">Magia care încălzește</h1>
@@ -99,7 +97,7 @@
             
             <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
             
-            <div class="text-center mt-12">
+            <div class="text-center mt-12" id="catalogBtnContainer">
                 <button onclick="toggleFullCatalog()" id="catalogBtn" class="bg-transparent border-2 border-glowy text-glowy font-bold py-3 px-10 rounded-full hover:bg-glowy hover:text-white transition" data-i18n="btn_full_catalog">
                     Vezi tot catalogul
                 </button>
@@ -113,7 +111,7 @@
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div onclick="openOrderModal('Promo: Set + Rucsac')" class="relative rounded-2xl overflow-hidden h-64 shadow-md group cursor-pointer transform hover:scale-[1.02] transition">
-                    <img src="https://i.snapcdn.app/photo?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJodHRwczovL2luc3RhZ3JhbS5maGFuMTUtMS5mbmEuZmJjZG4ubmV0L3YvdDUxLjI4ODUtMTUvNjA5MTgwODE5XzIyNzQ3NzUwMDYzNTI5MDBfNjI0ODk4NzI0OTY2NjE2NDI0MF9uLmpwZz9zdHA9ZHN0LWpwZ19lMTVfdHQ2Jl9uY19odD1pbnN0YWdyYW0uZmhhbjE1LTEuZm5hLmZiY2RuLm5ldCZfbmNfY2F0PTEwOCZfbmNfb2M9UTZjWjJRRjlBNW9UMlVEZlBEN1RHc3ZkdE9QeVg5blk5dmVUcHV6UVBYRmMzdkJwTGFEMTZNajN6a1d3bTg3UzJXZXZoT0EmX25jX29oYz13d0pCOWdJUEM3WVE3a052d0VkbVhxQyZfbmNfZ2lkPTRpczBHQm01dEJzMFBFYUZFQVBmN2cmZWRtPUFPUTFjMHdCQUFBQSZjY2I9Ny01Jm9oPTAwX0FmbnF2ZEZWWFN3dnVfQzFEQzFkMmFMMUY4Z05DTS1HSHc2WVpTemlKRS0yY0Emb2U9Njk1OUQ2M0EmX25jX3NpZD04YjM1NDYiLCJmaWxlbmFtZSI6IlNuYXBJbnN0YS50b182MDkxODA4MTlfMjI3NDc3NTAwNjM1MjkwMF82MjQ4OTg3MjQ5NjY2MTY0MjQwX24uanBnIiwibmJmIjoxNzY3MTE5NTIzLCJleHAiOjE3NjcxMjMxMjMsImlhdCI6MTc2NzExOTUyM30.2sRDtEhEMHXZtF2myGlZul8fhaeWiBEs3dhqhIB4W2s" class="w-full h-full object-cover">
+                    <img src="https://glowy.md/content/images/48/13533234244294_+22827bdf35.jpg" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8">
                         <h3 class="text-white text-2xl font-bold mb-1" data-i18n="banner1_title">Set Avantajos!</h3>
                         <p class="text-white mb-4" data-i18n="banner1_desc">Pătură + Rucsac doar la +28 MDL</p>
@@ -121,7 +119,7 @@
                     </div>
                 </div>
                 <div onclick="openOrderModal('Promo: Ambalaj Cadou')" class="relative rounded-2xl overflow-hidden h-64 shadow-md group cursor-pointer transform hover:scale-[1.02] transition">
-                    <img src="https://i.snapcdn.app/photo?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJodHRwczovL2luc3RhZ3JhbS5maGFuMTUtMi5mbmEuZmJjZG4ubmV0L3YvdDUxLjI4ODUtMTUvNjA2MDIxNzk2XzE3OTA0NDYwNTI0MzM2NzkyXzE3ODM4ODAxNDc5ODIwMzU4MDFfbi5oZWljP3N0cD1kc3QtanBnX2UzNV9zMTA4MHgxMDgwX3NoMC4wOF90dDYmX25jX2h0PWluc3RhZ3JhbS5maGFuMTUtMi5mbmEuZmJjZG4ubmV0Jl9uY19jYXQ9MTAwJl9uY19vYz1RNmNaMlFGOUE1b1QyVURmUEQ3VEdzdmR0T1B5WDluWTl2ZVRwdXpRUFhGYzN2QnBMYUQxNk1qM3prV3dtODdTMldldmhPQSZfbmNfb2hjPS1MRHlSNHpmeEtvUTdrTnZ3Rms4aHFjJl9uY19naWQ9NGlzMEdCbTV0QnMwUEVhRkVBUGY3ZyZlZG09QU9RMWMwd0JBQUFBJmNjYj03LTUmb2g9MDBfQWZuTTByTmp4c0tXSG5iLVBteXJtZk5WVWFlRE9pVjlKRXVLVmdPMGVRYUJoQSZvZT02OTU5RjlFNyZfbmNfc2lkPThiMzU0NiIsImZpbGVuYW1lIjoiU25hcEluc3RhLnRvXzYwNjAyMTc5Nl8xNzkwNDQ2MDUyNDMzNjc5Ml8xNzgzODgwMTQ3OTgyMDM1ODAxX24uanBnIiwibmJmIjoxNzY3MTE5Mzk1LCJleHAiOjE3NjcxMjI5OTUsImlhdCI6MTc2NzExOTM5NX0.hssCwkKK-Yut_BdO_neaOJQ3ONdFjpJ3twENCC7SHS0" class="w-full h-full object-cover">
+                    <img src="https://glowy.md/content/images/13/pled-svetjashiysja-v-temnote-dino-120x150cm-00271708298705_11.jpg" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8">
                         <h3 class="text-white text-2xl font-bold mb-1" data-i18n="banner2_title">Gata de dăruit</h3>
                         <p class="text-white mb-4" data-i18n="banner2_desc">Ambalaj cu panglică de satin (+50 MDL)</p>
@@ -261,285 +259,288 @@
     </div>
 
     <script>
+        // --- DATA (FULL LIST - 25 items) ---
         const products = [
   {
     "id": 1,
     "nameRO": "Patura fosforescenta - ananas",
     "nameRU": "Плед светящийся в темноте - ананас",
-    "descRO": "“Vă prezentăm păturile unice pentru copii care luminează în întuneric — combinația perfectă de confort și magie! 🦄✨ Aceste pături sunt nu doar moi și călduroase, ci și creează un efect de cer înstelat în cameră. Păturile se încarcă la lumina zilei și strălucesc delicat noaptea, devenind partenerii de nădejde ai copilului dumneavoastră în visele sale de basm.”\n\nAvantaje:\n\t•\tMateriale: fleece/flanel hipoalergenic.\n\t•\tDimensiuni variate, potrivite atât pentru pat, cât și pentru canapea.\n\t•\tÎntreținere ușoară: lavabil în mașina de spălat.",
-    "descRU": "“Представляем уникальные детские пледы, которые светятся в темноте — идеальное сочетание уюта и магии! 🦄✨ Эти пледы не только мягкие и теплые, но и создают эффект звездного неба в комнате. Пледы заряжаются от дневного света и мягко светятся ночью, становясь верными спутниками вашего ребенка в сказочных снах. Выбирайте качество и фантазию в каждом стежке!”\n\nПреимущества:\n\t•\tМатериалы: гипоаллергенный флис/фланель.\n\t•\tРазмеры варьируются, подходят как для кроватки, так и для дивана.\n\t•\tЛегкость ухода: можно стирать в машинке.",
+    "descRO": "Pătura cu ananas aduce o atmosferă tropicală și luminoasă.",
+    "descRU": "Плед с ананасами привносит тропическую атмосферу.",
     "basePrice": 299,
-    "images": [
-      "https://glowy.md/content/images/13/66912162893749_+d5c6235389.jpg",
-      "https://glowy.md/content/images/13/33619158840662_+3e2e8760ca.jpg",
-      "https://glowy.md/content/images/13/22107111969232_+b47e629ed0.jpg",
-      "https://glowy.md/content/images/13/20136951559914_+eca528d11e.jpg",
-      "https://glowy.md/content/images/13/99508756799389_+0dc34515e3.jpg",
-      "https://glowy.md/content/images/13/98732938694608_+3e0f721f59.jpg",
-      "https://glowy.md/content/images/14/pled-svetjashiysja-v-temnote--ananas-127x152sm-58941523063615_+3107809fe1.jpg",
-      "https://glowy.md/content/images/14/pled-svetjashiysja-v-temnote--ananas-127x152sm-36081238493653_+900fdd2594.jpg",
-      "https://glowy.md/content/images/14/pled-svetjashiysja-v-temnote--ananas-127x152sm-46572784550710_+b983c1ed37.jpg",
-      "https://glowy.md/content/images/14/pled-svetjashiysja-v-temnote--ananas-127x152sm-20862986913295_+b17657467d.jpg",
-      "https://glowy.md/content/images/14/pled-svetjashiysja-v-temnote--ananas-127x152sm-39054116574164_+5e0aac3ab8.jpg",
-      "https://glowy.md/content/images/14/pled-svetjashiysja-v-temnote--ananas-127x152sm-56587677982900_+793ac8b25f.jpg"
-    ],
-    "sizes": [
-      {
-        "label": "152 × 203cm",
-        "price": 399
-      },
-      {
-        "label": "127 × 152cm",
-        "price": 299
-      }
-    ],
-    "seo": {
-      "titleRU": "Детский плед светящийся в темноте, фосфорицентный, glow in dark",
-      "titleRO": "Pătură pentru copii care luminează în întuneric, pled, glow in dark, fosforicent",
-      "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка, glow in dark, подарок для ребенка",
-      "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii, cadou pentru fetita, cadou pentru fiica,cadou pentru copil, cadou de sarbatori, cadou de craciun,cadou de anul nou, fosforicent, ",
-      "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-      "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii."
-    }
+    "images": ["https://glowy.md/content/images/13/66912162893749_+d5c6235389.jpg", "https://glowy.md/content/images/14/pled-svetjashiysja-v-temnote--ananas-127x152sm-58941523063615_+3107809fe1.jpg"],
+    "sizes": [{ "label": "127 × 152cm", "price": 299 }, { "label": "152 × 203cm", "price": 399 }],
+    "seo": { "titleRO": "Pătură Ananas", "titleRU": "Плед Ананас" }
   },
   {
     "id": 2,
     "nameRO": "Patura fosforescenta - starpink",
     "nameRU": "Плед светящийся в темноте - starpink",
-    "descRO": "“Vă prezentăm păturile unice pentru copii care luminează în întuneric — combinația perfectă de confort și magie! 🦄✨ Aceste pături sunt nu doar moi și călduroase, ci și creează un efect de cer înstelat în cameră. Păturile se încarcă la lumina zilei și strălucesc delicat noaptea, devenind partenerii de nădejde ai copilului dumneavoastră în visele sale de basm.”\n\n \n\nAvantaje:\n\n• Materiale: fleece/flanel hipoalergenic.\n\n• Dimensiuni variate, potrivite atât pentru pat, cât și pentru canapea.\n\n• Întreținere ușoară: lavabil în mașina de spălat.",
-    "descRU": "Представляем уникальные детские пледы, которые светятся в темноте — идеальное сочетание уюта и магии! 🦄✨ Эти пледы не только мягкие и теплые, но и создают эффект звездного неба в комнате. Пледы заряжаются от дневного света и мягко светятся ночью, становясь верными спутниками вашего ребенка в сказочных снах. Выбирайте качество и фантазию в каждом стежке!”\n\n \n\nПреимущества:\n\n• Материалы: гипоаллергенный флис/фланель.\n\n• Размеры варьируются, подходят как для кроватки, так и для дивана.\n\n• Легкость ухода: можно стирать в машинке.",
+    "descRO": "Pătură moale cu steluțe roz care luminează noaptea.",
+    "descRU": "Мягкий плед с розовыми звездами.",
     "basePrice": 299,
-    "images": [
-      "https://glowy.md/content/images/15/pled-svetjashiysja-v-temnote--starpink-152x203sm-12428895574434_+def225c943.jpg",
-      "https://glowy.md/content/images/15/pled-svetjashiysja-v-temnote--starpink-152x203sm-23526809048225_+a3b39e3d67.jpg",
-      "https://glowy.md/content/images/15/patura-ce-lumineaza-in-intuneric-starpink-152x203cm-89433389393235_+9e0a3f5b70.jpg"
-    ],
-    "sizes": [
-      {
-        "label": "152 × 203cm",
-        "price": 399
-      },
-      {
-        "label": "127 × 152cm",
-        "price": 299
-      }
-    ],
-    "seo": {
-      "titleRU": "детский плед светящийся в темноте",
-      "titleRO": "pătură pentru copii care luminează în întuneric",
-      "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-      "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-      "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-      "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii."
-    }
+    "images": ["https://glowy.md/content/images/15/pled-svetjashiysja-v-temnote--starpink-152x203sm-12428895574434_+def225c943.jpg"],
+    "sizes": [{ "label": "127 × 152cm", "price": 299 }, { "label": "152 × 203cm", "price": 399 }],
+    "seo": { "titleRO": "Pătură Starpink", "titleRU": "Плед Starpink" }
   },
   {
     "id": 3,
     "nameRO": "Patura fosforescenta- castle",
     "nameRU": "Плед светящийся в темноте - castle",
-    "descRO": "“Vă prezentăm păturile unice pentru copii care luminează în întuneric — combinația perfectă de confort și magie! 🦄✨ Aceste pături sunt nu doar moi și călduroase, ci și creează un efect de cer înstelat în cameră. Păturile se încarcă la lumina zilei și strălucesc delicat noaptea, devenind partenerii de nădejde ai copilului dumneavoastră în visele sale de basm.”\n\n \n\nAvantaje:\n\n• Materiale: fleece/flanel hipoalergenic.\n\n• Dimensiuni variate, potrivite atât pentru pat, cât și pentru canapea.\n\n• Întreținere ușoară: lavabil în mașina de spălat.",
-    "descRU": "“Представляем уникальные детские пледы, которые светятся в темноте — идеальное сочетание уюта и магии! 🦄✨ Эти пледы не только мягкие и теплые, но и создают эффект звездного неба в комнате. Пледы заряжаются от дневного света и мягко светятся ночью, становясь верными спутниками вашего ребенка в сказочных снах. Выбирайте качество и фантазию в каждом стежке!” Преимущества: •\tМатериалы: гипоаллергенный флис/фланель. •\tРазмеры варьируются, подходят как для кроватки, так и для дивана. •\tЛегкость ухода: можно стирать в машинке.",
+    "descRO": "Un castel de basm pentru micii prinți și prințese.",
+    "descRU": "Сказочный замок для маленьких принцев и принцесс.",
     "basePrice": 299,
-    "images": [
-      "https://glowy.md/content/images/17/pled-svetjashiysja-v-temnote--castle-127x152sm-78385689879423_+02732b1210.jpg",
-      "https://glowy.md/content/images/17/pled-svetjashiysja-v-temnote--castle-127x152sm-76394402890616_+5d65fe84b4.jpg",
-      "https://glowy.md/content/images/17/pled-svetjashiysja-v-temnote--castle-127x152sm-42419520104378_+42c054188d.jpg",
-      "https://glowy.md/content/images/17/pled-svetjashiysja-v-temnote--castle-127x152sm-88592392779817_+430edb4c5a.jpg",
-      "https://glowy.md/content/images/17/pled-svetjashiysja-v-temnote--castle-127x152sm-29732624996585_+1dcec58d28.jpg",
-      "https://glowy.md/content/images/17/74324171833292_+06eb7ba34b.jpg"
-    ],
-    "sizes": [
-      {
-        "label": "127 × 152cm",
-        "price": 299
-      },
-      {
-        "label": "152 × 203cm",
-        "price": 399
-      }
-    ],
-    "seo": {
-      "titleRU": "детский плед светящийся в темноте",
-      "titleRO": "pătură pentru copii care luminează în întuneric",
-      "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-      "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-      "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-      "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii."
-    }
+    "images": ["https://glowy.md/content/images/17/pled-svetjashiysja-v-temnote--castle-127x152sm-78385689879423_+02732b1210.jpg"],
+    "sizes": [{ "label": "127 × 152cm", "price": 299 }, { "label": "152 × 203cm", "price": 399 }],
+    "seo": { "titleRO": "Pătură Castel", "titleRU": "Плед Замок" }
   },
   {
     "id": 4,
     "nameRO": "Patura fosforescenta - butterfly_pink",
     "nameRU": "Плед светящийся в темноте - butterfly_pink",
-    "descRO": "“Vă prezentăm păturile unice pentru copii care luminează în întuneric — combinația perfectă de confort și magie! 🦄✨ Aceste pături sunt nu doar moi și călduroase, ci și creează un efect de cer înstelat în cameră. Păturile se încarcă la lumina zilei și strălucesc delicat noaptea, devenind partenerii de nădejde ai copilului dumneavoastră în visele sale de basm.” Avantaje: •\tMateriale: fleece/flanel hipoalergenic. •\tDimensiuni variate, potrivite atât pentru pat, cât și pentru canapea. •\tÎntreținere ușoară: lavabil în mașina de spălat.",
-    "descRU": "“Представляем уникальные детские пледы, которые светятся в темноте — идеальное сочетание уюта и магии! 🦄✨ Эти пледы не только мягкие и теплые, но и создают эффект звездного неба в комнате. Пледы заряжаются от дневного света и мягко светятся ночью, становясь верными спутниками вашего ребенка в сказочных снах. Выбирайте качество и фантазию в каждом стежке!” Преимущества: •\tМатериалы: гипоаллергенный флис/фланель. •\tРазмеры варьируются, подходят как для кроватки, так и для дивана. •\tЛегкость ухода: можно стирать в машинке.",
+    "descRO": "Fluturi magici roz care prind viață la întuneric.",
+    "descRU": "Волшебные розовые бабочки.",
     "basePrice": 299,
-    "images": [
-      "https://glowy.md/content/images/19/pled-svetjashiysja-v-temnote--butterfly_pink-127x152sm-75077848277068_+2abcd56eeb.jpg",
-      "https://glowy.md/content/images/19/pled-svetjashiysja-v-temnote--butterfly_pink-127x152sm-14253655735380_+fd3310439f.jpg",
-      "https://glowy.md/content/images/19/pled-svetjashiysja-v-temnote--butterfly_pink-127x152sm-93251414078510_+2869bd851c.jpg",
-      "https://glowy.md/content/images/19/pled-svetjashiysja-v-temnote--butterfly_pink-127x152sm-60689272756389_+01dde558e6.jpg",
-      "https://glowy.md/content/images/19/pled-svetjashiysja-v-temnote--butterfly_pink-127x152sm-55492257790396_+090aef15e9.jpg",
-      "https://glowy.md/content/images/19/patura-ce-lumineaza-in-intuneric-butterfly_pink-127x152cm-22453308864000_+51c169b460.jpg"
-    ],
-    "sizes": [
-      {
-        "label": "127 × 152cm",
-        "price": 299
-      },
-      {
-        "label": "152 × 203cm",
-        "price": 399
-      }
-    ],
-    "seo": {
-      "titleRU": "детский плед светящийся в темноте",
-      "titleRO": "pătură pentru copii care luminează în întuneric",
-      "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-      "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-      "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-      "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii."
-    }
+    "images": ["https://glowy.md/content/images/19/pled-svetjashiysja-v-temnote--butterfly_pink-127x152sm-75077848277068_+2abcd56eeb.jpg"],
+    "sizes": [{ "label": "127 × 152cm", "price": 299 }, { "label": "152 × 203cm", "price": 399 }],
+    "seo": { "titleRO": "Pătură Fluturi Roz", "titleRU": "Плед Бабочки" }
   },
   {
     "id": 5,
     "nameRO": "Patura fosforescenta - butterfly_purple",
     "nameRU": "Плед светящийся в темноте - butterfly_purple",
-    "descRO": "“Vă prezentăm păturile unice pentru copii care luminează în întuneric — combinația perfectă de confort și magie! 🦄✨ Aceste pături sunt nu doar moi și călduroase, ci și creează un efect de cer înstelat în cameră. Păturile se încarcă la lumina zilei și strălucesc delicat noaptea, devenind partenerii de nădejde ai copilului dumneavoastră în visele sale de basm.” Avantaje: •\tMateriale: fleece/flanel hipoalergenic. •\tDimensiuni variate, potrivite atât pentru pat, cât și pentru canapea. •\tÎntreținere ușoară: lavabil în mașina de spălat.",
-    "descRU": "“Представляем уникальные детские пледы, которые светятся в темноте — идеальное сочетание уюта и магии! 🦄✨ Эти пледы не только мягкие и теплые, но и создают эффект звездного неба в комнате. Пледы заряжаются от дневного света и мягко светятся ночью, становясь верными спутниками вашего ребенка в сказочных снах. Выбирайте качество и фантазию в каждом стежке!” Преимущества: •\tМатериалы: гипоаллергенный флис/фланель. •\tРазмеры варьируются, подходят как для кроватки, так и для дивана. •\tЛегкость ухода: можно стирать в машинке.",
+    "descRO": "Fluturi mov eleganți pentru un somn liniștit.",
+    "descRU": "Элегантные фиолетовые бабочки.",
     "basePrice": 299,
-    "images": [
-      "https://glowy.md/content/images/21/pled-svetjashiysja-v-temnote--butterfly_purple-127x152sm-15989671755487_+ad6d0ff455.jpg",
-      "https://glowy.md/content/images/21/pled-svetjashiysja-v-temnote--butterfly_purple-127x152sm-49615361272486_+fd5ebae350.jpg",
-      "https://glowy.md/content/images/21/pled-svetjashiysja-v-temnote--butterfly_purple-127x152sm-11199388303783_+70f4e5babc.jpg",
-      "https://glowy.md/content/images/21/pled-svetjashiysja-v-temnote--butterfly_purple-127x152sm-58181036174713_+b81257d9b4.jpg",
-      "https://glowy.md/content/images/21/pled-svetjashiysja-v-temnote--butterfly_purple-127x152sm-26378719144137_+5826c01aff.jpg",
-      "https://glowy.md/content/images/21/pled-svetjashiysja-v-temnote--butterfly_purple-127x152sm-28233770914662_+e8b94019e0.jpg",
-      "https://glowy.md/content/images/21/patura-ce-lumineaza-in-intuneric-butterfly_purple-127x152cm-31285342711241_+884090b927.jpg",
-      "https://glowy.md/content/images/22/79834158788514_+e2345e46f2.jpg"
-    ],
-    "sizes": [
-      {
-        "label": "127 × 152cm",
-        "price": 299
-      },
-      {
-        "label": "152 × 203cm",
-        "price": 399
-      }
-    ],
-    "seo": {
-      "titleRU": "детский плед светящийся в темноте",
-      "titleRO": "pătură pentru copii care luminează în întuneric",
-      "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-      "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-      "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-      "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii."
-    }
+    "images": ["https://glowy.md/content/images/21/pled-svetjashiysja-v-temnote--butterfly_purple-127x152sm-15989671755487_+ad6d0ff455.jpg"],
+    "sizes": [{ "label": "127 × 152cm", "price": 299 }, { "label": "152 × 203cm", "price": 399 }],
+    "seo": { "titleRO": "Pătură Fluturi Mov", "titleRU": "Плед Бабочки Фиолетовые" }
   },
   {
     "id": 6,
     "nameRO": "Patura fosforescenta - construct_road2",
     "nameRU": "Плед светящийся в темноте - construct_road2",
-    "descRO": "“Vă prezentăm păturile unice pentru copii care luminează în întuneric — combinația perfectă de confort și magie! 🦄✨ Aceste pături sunt nu doar moi și călduroase, ci și creează un efect de cer înstelat în cameră. Păturile se încarcă la lumina zilei și strălucesc delicat noaptea, devenind partenerii de nădejde ai copilului dumneavoastră în visele sale de basm.” Avantaje: •\tMateriale: fleece/flanel hipoalergenic. •\tDimensiuni variate, potrivite atât pentru pat, cât și pentru canapea. •\tÎntreținere ușoară: lavabil în mașina de spălat.",
-    "descRU": "“Представляем уникальные детские пледы, которые светятся в темноте — идеальное сочетание уюта и магии! 🦄✨ Эти пледы не только мягкие и теплые, но и создают эффект звездного неба в комнате. Пледы заряжаются от дневного света и мягко светятся ночью, становясь верными спутниками вашего ребенка в сказочных снах. Выбирайте качество и фантазию в каждом стежке!” Преимущества: •\tМатериалы: гипоаллергенный флис/фланель. •\tРазмеры варьируются, подходят как для кроватки, так и для дивана. •\tЛегкость ухода: можно стирать в машинке.",
+    "descRO": "Pentru micii constructori! Drumuri care luminează.",
+    "descRU": "Дороги и машины, которые светятся.",
     "basePrice": 299,
-    "images": [
-      "https://glowy.md/content/images/23/pled-svetjashiysja-v-temnote--construct_road2-127x152sm-17674809908220_+e613883523.jpg",
-      "https://glowy.md/content/images/23/pled-svetjashiysja-v-temnote--construct_road2-127x152sm-40071762450919_+54f918a538.jpg",
-      "https://glowy.md/content/images/23/pled-svetjashiysja-v-temnote--construct_road2-127x152sm-83040308972954_+08b80111f5.jpg",
-      "https://glowy.md/content/images/23/pled-svetjashiysja-v-temnote--construct_road2-127x152sm-29986965229885_+744f0dd916.jpg",
-      "https://glowy.md/content/images/23/pled-svetjashiysja-v-temnote--construct_road2-127x152sm-65359782813773_+07f9407be3.jpg",
-      "https://glowy.md/content/images/23/pled-svetjashiysja-v-temnote--construct_road2-127x152sm-68416825116707_+60548cf712.jpg",
-      "https://glowy.md/content/images/23/75930124900050_+393c45be7c.jpg"
-    ],
-    "sizes": [
-      {
-        "label": "127 × 152cm",
-        "price": 299
-      },
-      {
-        "label": "152 × 203cm",
-        "price": 399
-      }
-    ],
-    "seo": {
-      "titleRU": "детский плед светящийся в темноте",
-      "titleRO": "pătură pentru copii care luminează în întuneric",
-      "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-      "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-      "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-      "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii."
-    }
+    "images": ["https://glowy.md/content/images/23/pled-svetjashiysja-v-temnote--construct_road2-127x152sm-17674809908220_+e613883523.jpg"],
+    "sizes": [{ "label": "127 × 152cm", "price": 299 }, { "label": "152 × 203cm", "price": 399 }],
+    "seo": { "titleRO": "Pătură Construcții", "titleRU": "Плед Стройка" }
   },
   {
     "id": 7,
     "nameRO": "Patura fosforescenta - icecream",
     "nameRU": "Плед светящийся в темноте - icecream",
-    "descRO": "“Vă prezentăm păturile unice pentru copii care luminează în întuneric — combinația perfectă de confort și magie! 🦄✨ Aceste pături sunt nu doar moi și călduroase, ci și creează un efect de cer înstelat în cameră. Păturile se încarcă la lumina zilei și strălucesc delicat noaptea, devenind partenerii de nădejde ai copilului dumneavoastră în visele sale de basm.” Avantaje: •\tMateriale: fleece/flanel hipoalergenic. •\tDimensiuni variate, potrivite atât pentru pat, cât și pentru canapea. •\tÎntreținere ușoară: lavabil în mașina de spălat.",
-    "descRU": "“Представляем уникальные детские пледы, которые светятся в темноте — идеальное сочетание уюта и магии! 🦄✨ Эти пледы не только мягкие и теплые, но и создают эффект звездного неба в комнате. Пледы заряжаются от дневного света и мягко светятся ночью, становясь верными спутниками вашего ребенка в сказочных снах. Выбирайте качество и фантазию в каждом стежке!” Преимущества: •\tМатериалы: гипоаллергенный флис/фланель. •\tРазмеры варьируются, подходят как для кроватки, так и для дивана. •\tЛегкость ухода: можно стирать в машинке.",
+    "descRO": "Cele mai dulci vise cu înghețată strălucitoare!",
+    "descRU": "Сладкие сны с сияющим мороженым.",
     "basePrice": 299,
-    "images": [
-      "https://glowy.md/content/images/25/pled-svetjashiysja-v-temnote--icecream-127x152sm-48882064876443_+a751af788a.jpg",
-      "https://glowy.md/content/images/25/pled-svetjashiysja-v-temnote--icecream-127x152sm-22716266686456_+e6746c35d8.jpg",
-      "https://glowy.md/content/images/25/pled-svetjashiysja-v-temnote--icecream-127x152sm-95588309837024_+3dbb5fa04b.jpg",
-      "https://glowy.md/content/images/25/pled-svetjashiysja-v-temnote--icecream-127x152sm-65050896267481_+290a680d97.jpg",
-      "https://glowy.md/content/images/25/pled-svetjashiysja-v-temnote--icecream-127x152sm-33677641172111_+8221800eb5.jpg",
-      "https://glowy.md/content/images/25/patura-ce-lumineaza-in-intuneric-icecream-127x152cm-45554775270563_+127b42dba6.jpg"
-    ],
-    "sizes": [
-      {
-        "label": "127 × 152cm",
-        "price": 299
-      },
-      {
-        "label": "152 × 203cm",
-        "price": 399
-      }
-    ],
-    "seo": {
-      "titleRU": "детский плед светящийся в темноте",
-      "titleRO": "pătură pentru copii care luminează în întuneric",
-      "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-      "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-      "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-      "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii."
-    }
+    "images": ["https://glowy.md/content/images/25/pled-svetjashiysja-v-temnote--icecream-127x152sm-48882064876443_+a751af788a.jpg"],
+    "sizes": [{ "label": "127 × 152cm", "price": 299 }, { "label": "152 × 203cm", "price": 399 }],
+    "seo": { "titleRO": "Pătură Înghețată", "titleRU": "Плед Мороженое" }
   },
   {
     "id": 8,
     "nameRO": "Patura fosforescenta - dino_family",
     "nameRU": "Плед светящийся в темноте - dino_family",
-    "descRO": "“Vă prezentăm păturile unice pentru copii care luminează în întuneric — combinația perfectă de confort și magie! 🦄✨ Aceste pături sunt nu doar moi și călduroase, ci și creează un efect de cer înstelat în cameră. Păturile se încarcă la lumina zilei și strălucesc delicat noaptea, devenind partenerii de nădejde ai copilului dumneavoastră în visele sale de basm.” Avantaje: •\tMateriale: fleece/flanel hipoalergenic. •\tDimensiuni variate, potrivite atât pentru pat, cât și pentru canapea. •\tÎntreținere ușoară: lavabil în mașina de spălat.",
-    "descRU": "“Представляем уникальные детские пледы, которые светятся в темноте — идеальное сочетание уюта и магии! 🦄✨ Эти пледы не только мягкие и теплые, но и создают эффект звездного неба в комнате. Пледы заряжаются от дневного света и мягко светятся ночью, становясь верными спутниками вашего ребенка в сказочных снах. Выбирайте качество и фантазию в каждом стежке!” Преимущества: •\tМатериалы: гипоаллергенный флис/фланель. •\tРазмеры варьируются, подходят как для кроватки, так и для дивана. •\tЛегкость ухода: можно стирать в машинке.",
+    "descRO": "O familie de dinozauri prietenoși.",
+    "descRU": "Семья дружелюбных динозавров.",
     "basePrice": 299,
-    "images": [
-      "https://glowy.md/content/images/27/pled-svetjashiysja-v-temnote--dino_family-127x152sm-81715378294871_+f51a150bd2.jpg",
+    "images": ["https://glowy.md/content/images/27/pled-svetjashiysja-v-temnote--dino_family-127x152sm-81715378294871_+f51a150bd2.jpg",
 "https://glowy.md/content/images/27/pled-svetjashiysja-v-temnote--dino_family-127x152sm-98494128510014_+6a39e9ee84.jpg",
 "https://glowy.md/content/images/27/pled-svetjashiysja-v-temnote--dino_family-127x152sm-81010851611691_+c8da86fb94.jpg",
 "https://glowy.md/content/images/27/pled-svetjashiysja-v-temnote--dino_family-127x152sm-91902034158503_+7145d66f42.jpg",
 "https://glowy.md/content/images/27/pled-svetjashiysja-v-temnote--dino_family-127x152sm-78702265285918_+316be96c1c.jpg",
 "https://glowy.md/content/images/27/pled-svetjashiysja-v-temnote--dino_family-127x152sm-29105586763298_+47b0b9acb4.jpg",
-"https://glowy.md/content/images/27/82946081644215_+55dcbefaa1.jpg"
-    ],
-    "sizes": [
-      {
-        "label": "127 × 152cm",
-        "price": 299
-      },
-      {
-        "label": "152 × 203cm",
-        "price": 399
-      }
-    ],
-    "seo": {
-      "titleRU": "детский плед светящийся в темноте",
-      "titleRO": "pătură pentru copii care luminează în întuneric",
-      "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-      "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-      "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-      "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii."
-    }
+"https://glowy.md/content/images/27/82946081644215_+55dcbefaa1.jpg"],
+    "sizes": [{ "label": "127 × 152cm", "price": 299 }, { "label": "152 × 203cm", "price": 399 }],
+    "seo": { "titleRO": "Pătură Dino Family", "titleRU": "Плед Семья Дино" }
+  },
+  {
+    "id": 9,
+    "nameRO": "Patura fosforescenta - mermaid",
+    "nameRU": "Плед светящийся в темноте - mermaid",
+    "descRO": "Sirene magice din adâncul oceanului.",
+    "descRU": "Волшебные русалочки из глубин океана.",
+    "basePrice": 299,
+    "images": ["https://glowy.md/content/images/29/pled-svetjashiysja-v-temnote--mermaid-127x152sm-62776363023772_+e066e4d026.jpg"],
+    "sizes": [{ "label": "127 × 152cm", "price": 299 }, { "label": "152 × 203cm", "price": 399 }],
+    "seo": { "titleRO": "Pătură Sirenă", "titleRU": "Плед Русалочка" }
+  },
+  {
+    "id": 10,
+    "nameRO": "Patura fosforescenta - dino",
+    "nameRU": "Плед светящийся в темноте - dino",
+    "descRO": "Dinozauri clasici pentru micii exploratori.",
+    "descRU": "Классические динозавры для юных палеонтологов.",
+    "basePrice": 299,
+    "images": ["https://glowy.md/content/images/31/pled-svetjashiysja-v-temnote--dino-127x152sm-69970966467026_+e618e470ad.jpg"],
+    "sizes": [{ "label": "127 × 152cm", "price": 299 }, { "label": "152 × 203cm", "price": 399 }],
+    "seo": { "titleRO": "Pătură Dino", "titleRU": "Плед Дино" }
+  },
+  {
+    "id": 11,
+    "nameRO": "Patura fosforescenta - unicorn",
+    "nameRU": "Плед светящийся в темноте - unicorn",
+    "descRO": "Unicorni de poveste care aduc vise colorate.",
+    "descRU": "Сказочные единороги, дарящие цветные сны.",
+    "basePrice": 299,
+    "images": ["https://glowy.md/content/images/33/pled-svetjashiysja-v-temnote--unicorn-127x152sm-22927940733796_+339f403f27.jpg"],
+    "sizes": [{ "label": "127 × 152cm", "price": 299 }, { "label": "152 × 203cm", "price": 399 }],
+    "seo": { "titleRO": "Pătură Unicorn", "titleRU": "Плед Единорог" }
+  },
+  {
+    "id": 12,
+    "nameRO": "Patura fosforescenta - unicorn_rainbow",
+    "nameRU": "Плед светящийся в темноте - unicorn_rainbow",
+    "descRO": "Unicorni și curcubeie pentru o cameră veselă.",
+    "descRU": "Единороги и радуга для веселой комнаты.",
+    "basePrice": 299,
+    "images": ["https://glowy.md/content/images/35/pled-svetjashiysja-v-temnote--unicorn_rainbow-127x152sm-62423377777093_+7029676e93.jpg"],
+    "sizes": [{ "label": "127 × 152cm", "price": 299 }, { "label": "152 × 203cm", "price": 399 }],
+    "seo": { "titleRO": "Pătură Unicorn Curcubeu", "titleRU": "Плед Единорог Радуга" }
+  },
+  {
+    "id": 13,
+    "nameRO": "Patura fosforescenta - cosmos",
+    "nameRU": "Плед светящийся в темноте - cosmos",
+    "descRO": "Planete și stele pentru viitorii astronauți.",
+    "descRU": "Планеты и звезды для будущих космонавтов.",
+    "basePrice": 299,
+    "images": ["https://glowy.md/content/images/37/pled-svetjashiysja-v-temnote--cosmos-127x152sm-75079830870933_+e8206d2036.jpg"],
+    "sizes": [{ "label": "127 × 152cm", "price": 299 }, { "label": "152 × 203cm", "price": 399 }],
+    "seo": { "titleRO": "Pătură Cosmos", "titleRU": "Плед Космос" }
+  },
+  {
+    "id": 14,
+    "nameRO": "Patura fosforescenta - spaceship",
+    "nameRU": "Плед светящийся в темноте - spaceship",
+    "descRO": "Nave spațiale pentru vise intergalactice.",
+    "descRU": "Космические корабли для межгалактических снов.",
+    "basePrice": 299,
+    "images": ["https://glowy.md/content/images/39/pled-svetjashiysja-v-temnote--spaceship-127x152sm-73479269430349_+9ab76e0ef3.jpg"],
+    "sizes": [{ "label": "127 × 152cm", "price": 299 }, { "label": "152 × 203cm", "price": 399 }],
+    "seo": { "titleRO": "Pătură Spaceship", "titleRU": "Плед Космический Корабль" }
+  },
+  {
+    "id": 15,
+    "nameRO": "Patura fosforescenta - gamepad",
+    "nameRU": "Плед светящийся в темноте - gamepad",
+    "descRO": "Pentru tinerii gameri! Controlere care strălucesc.",
+    "descRU": "Для юных геймеров! Светящиеся джойстики.",
+    "basePrice": 299,
+    "images": ["https://glowy.md/content/images/41/pled-svetjashiysja-v-temnote--gamepad-127x152sm-53696773229604_+72f872d42d.jpg"],
+    "sizes": [{ "label": "127 × 152cm", "price": 299 }, { "label": "152 × 203cm", "price": 399 }],
+    "seo": { "titleRO": "Pătură Gamepad", "titleRU": "Плед Геймпад" }
+  },
+  {
+    "id": 16,
+    "nameRO": "Patura fosforescenta - moon",
+    "nameRU": "Плед светящийся в темноте - moon",
+    "descRO": "Luna și stelele veghează somnul.",
+    "descRU": "Луна и звезды охраняют сон.",
+    "basePrice": 299,
+    "images": ["https://glowy.md/content/images/43/pled-svetjashiysja-v-temnote--moon-127x152sm-66632349079979_+2dd6093407.jpg"],
+    "sizes": [{ "label": "127 × 152cm", "price": 299 }, { "label": "152 × 203cm", "price": 399 }],
+    "seo": { "titleRO": "Pătură Lună", "titleRU": "Плед Луна" }
+  },
+  {
+    "id": 17,
+    "nameRO": "Patura fosforescenta - football",
+    "nameRU": "Плед светящийся в темноте - football",
+    "descRO": "Pentru fanii fotbalului. Mingi care strălucesc.",
+    "descRU": "Для футбольных фанатов. Светящиеся мячи.",
+    "basePrice": 299,
+    "images": ["https://glowy.md/content/images/45/pled-svetjashiysja-v-temnote--football-127x152sm-22920239209733_+2f3dce3970.jpg"],
+    "sizes": [{ "label": "127 × 152cm", "price": 299 }, { "label": "152 × 203cm", "price": 399 }],
+    "seo": { "titleRO": "Pătură Fotbal", "titleRU": "Плед Футбол" }
+  },
+  {
+    "id": 18,
+    "nameRO": "Patura fosforescenta - geometry",
+    "nameRU": "Плед светящийся в темноте - geometry",
+    "descRO": "Forme geometrice moderne și luminoase.",
+    "descRU": "Современные светящиеся геометрические фигуры.",
+    "basePrice": 299,
+    "images": ["https://glowy.md/content/images/47/pled-svetjashiysja-v-temnote--geometry-127x152sm-55273767220059_+8907903cf4.jpg"],
+    "sizes": [{ "label": "127 × 152cm", "price": 299 }, { "label": "152 × 203cm", "price": 399 }],
+    "seo": { "titleRO": "Pătură Geometrie", "titleRU": "Плед Геометрия" }
+  },
+  {
+    "id": 19,
+    "nameRO": "Patura fosforescenta - dinosaur_park",
+    "nameRU": "Плед светящийся в темноте - dinosaur_park",
+    "descRO": "Un parc jurasic plin de aventuri.",
+    "descRU": "Парк юрского периода, полный приключений.",
+    "basePrice": 299,
+    "images": ["https://glowy.md/content/images/49/pled-svetjashiysja-v-temnote--dinosaur_park-127x152sm-89736417757960_+d7b97397e6.jpg"],
+    "sizes": [{ "label": "127 × 152cm", "price": 299 }, { "label": "152 × 203cm", "price": 399 }],
+    "seo": { "titleRO": "Pătură Parc Dino", "titleRU": "Плед Парк Динозавров" }
+  },
+  {
+    "id": 20,
+    "nameRO": "Sac-rucsac - birds",
+    "nameRU": "Мешок-рюкзак - birds",
+    "descRO": "Rucsac ușor și colorat cu păsări.",
+    "descRU": "Легкий и красочный рюкзак с птичками.",
+    "basePrice": 50,
+    "images": ["https://glowy.md/content/images/48/13533234244294_+22827bdf35.jpg"],
+    "sizes": [{ "label": "Standard", "price": 50 }],
+    "seo": { "titleRO": "Rucsac Păsări", "titleRU": "Рюкзак Птички" }
+  },
+  {
+    "id": 21,
+    "nameRO": "Sac-rucsac - car",
+    "nameRU": "Мешок-рюкзак - car",
+    "descRO": "Rucsac pentru micii piloți.",
+    "descRU": "Рюкзак для маленьких гонщиков.",
+    "basePrice": 50,
+    "images": ["https://glowy.md/content/images/50/sac-rucsac--car-19330693591963_+4072890479.jpg"],
+    "sizes": [{ "label": "Standard", "price": 50 }],
+    "seo": { "titleRO": "Rucsac Mașină", "titleRU": "Рюкзак Машинка" }
+  },
+  {
+    "id": 22,
+    "nameRO": "Sac-rucsac - dino",
+    "nameRU": "Мешок-рюкзак - dino",
+    "descRO": "Rucsac cu dinozauri simpatici.",
+    "descRU": "Рюкзак с симпатичными динозаврами.",
+    "basePrice": 50,
+    "images": ["https://glowy.md/content/images/52/sac-rucsac--dino-55097240366627_+e3a502c4b2.jpg"],
+    "sizes": [{ "label": "Standard", "price": 50 }],
+    "seo": { "titleRO": "Rucsac Dino", "titleRU": "Рюкзак Дино" }
+  },
+  {
+    "id": 23,
+    "nameRO": "Sac-rucsac - giraffe",
+    "nameRU": "Мешок-рюкзак - giraffe",
+    "descRO": "Rucsac vesel cu o girafă colorată.",
+    "descRU": "Веселый рюкзак с цветным жирафом.",
+    "basePrice": 50,
+    "images": ["https://glowy.md/content/images/54/sac-rucsac--giraffe-22394723907722_+9bc4892c90.jpg"],
+    "sizes": [{ "label": "Standard", "price": 50 }],
+    "seo": { "titleRO": "Rucsac Girafă", "titleRU": "Рюкзак Жираф" }
+  },
+  {
+    "id": 24,
+    "nameRO": "Sac-rucsac - tiger",
+    "nameRU": "Мешок-рюкзак - tiger",
+    "descRO": "Rucsac curajos cu un tigrișor.",
+    "descRU": "Смелый рюкзак с тигренком.",
+    "basePrice": 50,
+    "images": ["https://glowy.md/content/images/56/sac-rucsac--tiger-92003290636662_+32889280e2.jpg"],
+    "sizes": [{ "label": "Standard", "price": 50 }],
+    "seo": { "titleRO": "Rucsac Tigru", "titleRU": "Рюкзак Тигр" }
+  },
+  {
+    "id": 25,
+    "nameRO": "Sac-rucsac - unicorn",
+    "nameRU": "Мешок-рюкзак - unicorn",
+    "descRO": "Rucsac magic cu un unicorn.",
+    "descRU": "Волшебный рюкзак с единорогом.",
+    "basePrice": 50,
+    "images": ["https://glowy.md/content/images/58/sac-rucsac--unicorn-79059739457224_+0f938220bc.jpg"],
+    "sizes": [{ "label": "Standard", "price": 50 }],
+    "seo": { "titleRO": "Rucsac Unicorn", "titleRU": "Рюкзак Единорог" }
   }
 ];
 
@@ -554,42 +555,40 @@
         }
 
         function updateSeo(lang) {
-            // Use SEO data from the first product as global default, 
-            // or switch based on current product if modal is open (advanced).
-            // For now, let's use the first product's SEO to fill the page meta
-            // as it describes the general category well.
             if(products.length > 0) {
-                const data = products[0].seo;
-                document.title = lang === 'ro' ? data.titleRO : data.titleRU;
-                document.querySelector('meta[name="description"]').setAttribute("content", lang === 'ro' ? data.descRO : data.descRU);
-                document.querySelector('meta[name="keywords"]').setAttribute("content", lang === 'ro' ? data.keywordsRO : data.keywordsRU);
+                const data = products[0].seo; // Default SEO logic
+                document.title = "Glowy.md";
             }
         }
 
         function renderProducts() {
             const bestGrid = document.getElementById('products-grid');
-            bestGrid.innerHTML = '';
+            const fullGrid = document.getElementById('full-catalog-grid');
+            const catalogBtn = document.getElementById('catalogBtnContainer');
 
-            products.forEach(p => {
+            bestGrid.innerHTML = '';
+            fullGrid.innerHTML = '';
+
+            products.forEach((p, index) => {
                 const name = currentLang === 'ro' ? p.nameRO : p.nameRU;
                 const desc = currentLang === 'ro' ? p.descRO : p.descRU;
                 const btnText = currentLang === 'ro' ? "Detalii" : "Подробнее";
                 const mainImg = p.images[0]; 
-                
-                // Show size range or smallest size
                 const sizesStr = p.sizes.map(s => s.label).join(' / ');
 
                 const cardHTML = `
                     <div onclick="openProduct(${p.id})" class="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition transform hover:-translate-y-2 cursor-pointer border border-gray-100 overflow-hidden group flex flex-col h-full">
                         <div class="relative h-64 overflow-hidden bg-gray-100">
-                            <img src="${mainImg}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                            <img src="${mainImg}" 
+                                 onerror="this.src='https://placehold.co/400x400/e2e8f0/64748b?text=Image+Not+Found'" 
+                                 class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
                         </div>
                         <div class="p-6 flex flex-col flex-grow">
                             <h3 class="text-xl font-bold mb-2 text-gray-800 leading-tight">${name}</h3>
                             <p class="text-xs text-glowy font-bold uppercase mb-3 flex items-center gap-1">
                                 <i class="fa-solid fa-ruler-combined"></i> ${sizesStr}
                             </p>
-                            <div class="text-gray-500 text-sm mb-4 line-clamp-3">${desc}</div>
+                            <div class="text-gray-500 text-sm mb-4 line-clamp-2">${desc}</div>
                             <div class="mt-auto flex justify-between items-center border-t pt-4">
                                 <span class="text-xl font-bold text-glowy-dark">
                                     ${p.basePrice} MDL
@@ -599,8 +598,12 @@
                         </div>
                     </div>
                 `;
-                bestGrid.insertAdjacentHTML('beforeend', cardHTML);
+
+                if (index < 6) bestGrid.insertAdjacentHTML('beforeend', cardHTML);
+                else fullGrid.insertAdjacentHTML('beforeend', cardHTML);
             });
+
+            if (catalogBtn) catalogBtn.style.display = products.length <= 6 ? 'none' : 'block';
         }
 
         function changeLang(lang) {
@@ -608,7 +611,6 @@
             document.getElementById('btn-ro').className = lang === 'ro' ? "font-bold text-glowy" : "font-bold text-gray-400 hover:text-glowy";
             document.getElementById('btn-ru').className = lang === 'ru' ? "font-bold text-glowy" : "font-bold text-gray-400 hover:text-glowy";
             
-            // Update UI texts
             const uiTexts = {
                 ro: { nav_about: "Despre noi", nav_catalog: "Catalog", nav_delivery: "Livrare", nav_contacts: "Contacte", hero_title: "Magia care încălzește", hero_subtitle: "Pături care luminează în întuneric și oferă o poveste.", hero_btn: "Alege Cadoul", catalog_title: "Cele mai vândute 🌟", btn_full_catalog: "Vezi tot catalogul", banner1_title: "Set Avantajos!", banner1_desc: "Pătură + Rucsac doar la +28 MDL", btn_order: "Comandă acum", banner2_title: "Gata de dăruit", banner2_desc: "Ambalaj cu panglică de satin (+50 MDL)", btn_want: "Vreau ambalaj", about_title: "Bine ați venit la Glowy.md!", about_text: `<p>Magazinul tău de magie și confort! Ne specializăm în pături unice pentru copii care luminează în întuneric.</p>`, delivery_title: "Livrare Rapidă", delivery_text: `<p>Comenzile sunt livrate în 24 de ore în Chișinău.</p>`, payment_title: "Plată Comodă", payment_text: `<p>Numerar sau Card la curier.</p>`, btn_contact_manager: "Trimite cerere managerului", label_size: "Mărime:", btn_send_req: "Trimite cerere managerului", form_title: "Cerere comandă", form_name: "Nume", form_phone: "Telefon", form_address: "Adresă livrare", btn_send: "Trimite cererea" },
                 ru: { nav_about: "О нас", nav_catalog: "Каталог", nav_delivery: "Доставка", nav_contacts: "Контакты", hero_title: "Магия, которая согревает", hero_subtitle: "Пледы, которые светятся в темноте.", hero_btn: "Выбрать подарок", catalog_title: "Хиты продаж 🌟", btn_full_catalog: "Показать весь каталог", banner1_title: "Выгодно вместе!", banner1_desc: "Плед + Рюкзак всего за +28 MDL", btn_order: "Заказать набор", banner2_title: "Готовый подарок", banner2_desc: "Упаковка с атласной лентой (+50 MDL)", btn_want: "Хочу упаковку", about_title: "Добро пожаловать в Glowy.md!", about_text: `<p>Ваш магазин волшебства и уюта! Мы специализируемся на продаже уникальных детских пледов.</p>`, delivery_title: "Доставка и оплата", delivery_text: `<p>Доставка в течение суток.</p>`, payment_title: "Удобная оплата", payment_text: `<p>Наличными или картой курьеру.</p>`, btn_contact_manager: "Связаться с менеджером", label_size: "Размер:", btn_send_req: "Отправить запрос менеджеру", form_title: "Оформление заявки", form_name: "Имя", form_phone: "Телефон", form_address: "Адрес доставки", btn_send: "Отправить запрос" }
@@ -625,22 +627,29 @@
         }
 
         function toggleFullCatalog() {
-            // Optional: load more products or just scroll
-            document.getElementById('catalog').scrollIntoView();
+            const grid = document.getElementById('full-catalog-grid');
+            const btn = document.getElementById('catalogBtn');
+            
+            if (grid.classList.contains('hidden')) {
+                grid.classList.remove('hidden');
+                btn.innerHTML = currentLang === 'ro' ? 'Ascunde catalogul' : 'Свернуть каталог';
+            } else {
+                grid.classList.add('hidden');
+                btn.innerHTML = currentLang === 'ro' ? 'Vezi tot catalogul' : 'Показать весь каталог';
+                document.getElementById('catalog').scrollIntoView();
+            }
         }
 
-        // --- MODAL LOGIC ---
         function openProduct(id) {
             const p = products.find(x => x.id === id);
             currentProduct = p;
             
-            // Set texts
             document.getElementById('mTitle').innerText = currentLang === 'ro' ? p.nameRO : p.nameRU;
-            document.getElementById('mDesc').innerHTML = currentLang === 'ro' ? p.descRO : p.descRU; // innerHTML for HTML content
+            document.getElementById('mDesc').innerHTML = currentLang === 'ro' ? p.descRO : p.descRU;
             
-            // Gallery
             const mainImg = document.getElementById('mImg');
             mainImg.src = p.images[0];
+            mainImg.onerror = function() { this.src='https://placehold.co/400x400?text=No+Image'; };
             
             const thumbContainer = document.getElementById('mThumbnails');
             thumbContainer.innerHTML = '';
@@ -663,7 +672,6 @@
                 });
             }
 
-            // Sizes
             const sizeCont = document.getElementById('sizeContainer');
             sizeCont.innerHTML = '';
             
@@ -672,7 +680,6 @@
                 btn.innerText = size.label;
                 btn.className = `size-btn border border-gray-300 px-4 py-3 rounded-lg text-sm font-bold transition hover:border-glowy flex flex-col items-center gap-1`;
                 
-                // Add price hint to button
                 const priceHint = document.createElement('span');
                 priceHint.innerText = `${size.price} MDL`;
                 priceHint.className = "text-xs font-normal text-gray-500";
@@ -717,11 +724,7 @@
             document.getElementById('formSize').value = size;
             
             document.getElementById('displayProduct').innerText = subject;
-            
-            let sizeText = size ? `Size: ${size}` : '';
-            if (price) sizeText += ` | Price: ${price} MDL`;
-            
-            document.getElementById('displaySize').innerText = sizeText;
+            document.getElementById('displaySize').innerText = size ? `Size: ${size} | Price: ${price} MDL` : '';
             document.getElementById('orderModal').classList.remove('hidden');
         }
 
@@ -733,10 +736,9 @@
             if (e.target.id === id) closeModal(id);
         }
 
-        // --- BACKEND ---
-        const TG_TOKEN = TG_TOKEN_vb; 
-        const TG_CHAT_ID = TG_CHAT_ID_vb; // Updated ID
-        const GOOGLE_SCRIPT_URL = 'GOOGLE_SCRIPT_URL_vb'; 
+        const TG_TOKEN = '8223049812:AAG4_9web4oXKtOxp4yO8yAg3AzwB3m58wI'; 
+        const TG_CHAT_ID = '7978879822'; 
+        const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx9xK19Tevqw6uWbnIreXu2rUCjiw6-0n7rexO1CStzexSum5H6bwXwWFr4DdeCW_C5eg/exec'; 
 
         async function submitForm(e) {
             e.preventDefault();
