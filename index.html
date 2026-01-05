@@ -1298,64 +1298,54 @@ function openProduct(id) {
         const TG_CHAT_ID = typeof TG_CHAT_ID_var !== 'undefined' ? TG_CHAT_ID_var : ''; 
         const GOOGLE_SCRIPT_URL = typeof GOOGLE_SCRIPT_URL_var !== 'undefined' ? GOOGLE_SCRIPT_URL_var : ''; 
 
-        async function submitForm(e) {
-            e.preventDefault();
-            const btn = document.getElementById('submitBtn');
-            const originalText = btn.innerText;
-            btn.innerText = "Se trimite... / Отправка...";
-            btn.disabled = true;
+async function submitForm(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const originalText = btn.innerText;
+    btn.innerText = "Se trimite... / Отправка...";
+    btn.disabled = true;
 
-            const name = document.getElementById('inpName').value;
-            const phone = document.getElementById('inpPhone').value;
-            const email = document.getElementById('inpEmail').value;
-            const address = document.getElementById('inpAddress').value;
-            const topic = document.getElementById('formSubject').value;
-            const size = document.getElementById('formSize').value;
+    // Сбор данных из формы
+    const name = document.getElementById('inpName').value;
+    const phone = document.getElementById('inpPhone').value;
+    const email = document.getElementById('inpEmail').value;
+    const address = document.getElementById('inpAddress').value;
+    const topic = document.getElementById('formSubject').value;
+    const size = document.getElementById('formSize').value;
 
-            const fullItemName = size ? `${topic} [${size}]` : topic;
+    const fullItemName = size ? `${topic} [${size}]` : topic;
 
-            try {
-                const tgMsg = `🚀 *NEW ORDER GLOWY*\n\n📦 *Item:* ${fullItemName}\n💰 *Price:* ${currentPrice} MDL\n👤 *Name:* ${name}\n📞 *Phone:* ${phone}\n📍 *Addr:* ${address}\n📧 *Email:* ${email}`;
-                
-                const tgResponse = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
-                    method: 'POST',
-                    headers: {'Content-Type': 'application/json'},
-                    body: JSON.stringify({ chat_id: TG_CHAT_ID, text: tgMsg, parse_mode: 'Markdown' })
-                });
+    // 1. Подготовка текста для Telegram
+    const tgMsg = `🚀 *NEW ORDER GLOWY*\n\n📦 *Item:* ${fullItemName}\n💰 *Price:* ${currentPrice} MDL\n👤 *Name:* ${name}\n📞 *Phone:* ${phone}\n📍 *Addr:* ${address}\n📧 *Email:* ${email}`;
 
-                if (!tgResponse.ok) {
-                    const errorData = await tgResponse.json();
-                    alert('Error Telegram: ' + errorData.description);
-                    btn.innerText = originalText;
-                    btn.disabled = false;
-                    return;
-                }
+    // 2. Подготовка объекта для Google Sheets
+    const sheetData = { name, phone, email, address, topic: fullItemName };
 
-            } catch (err) {
-                console.error("TG Error", err);
-                alert('Connection Error');
-                btn.innerText = originalText;
-                btn.disabled = false;
-                return;
-            }
+    try {
+        // Отправляем ВСЕ данные на наш безопасный API
+        const response = await fetch('/api/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ 
+                message: tgMsg,      // Для Телеграма
+                sheetData: sheetData // Для Гугл Таблицы
+            }) 
+        });
 
-            if (GOOGLE_SCRIPT_URL) {
-                try {
-                    const sheetData = { name, phone, email, address, topic: fullItemName };
-                    fetch(GOOGLE_SCRIPT_URL, {
-                        method: "POST",
-                        body: JSON.stringify(sheetData),
-                        headers: { "Content-Type": "text/plain;charset=utf-8" },
-                    });
-                } catch (err) { console.error("Sheet Error", err); }
-            }
+        if (!response.ok) throw new Error('Failed to send');
 
-            alert(currentLang === 'ro' ? "Cererea a fost trimisă cu succes!" : "Заявка успешно отправлена!");
-            closeModal('orderModal');
-            e.target.reset();
-            btn.innerText = originalText;
-            btn.disabled = false;
-        }
+        alert(currentLang === 'ro' ? "Cererea a fost trimisă cu succes!" : "Заявка успешно отправлена!");
+        closeModal('orderModal');
+        e.target.reset();
+
+    } catch (err) {
+        alert('Error sending order / Eroare la trimitere');
+        console.error(err);
+    } finally {
+        btn.innerText = originalText;
+        btn.disabled = false;
+    }
+}
 
         init();
     </script>
