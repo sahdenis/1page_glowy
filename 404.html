@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Glowy.md</title>
+    <link rel="icon" type="image/png" href="https://ihegootehofxyltq.public.blob.vercel-storage.com/favicon.png" />
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        glowy: { light: '#a5b4fc', DEFAULT: '#6366f1', dark: '#f472b6', pink: '#f472b6' }
+                    },
+                    fontFamily: { sans: ['Nunito', 'sans-serif'] }
+                }
+            }
+        }
+    </script>
+    <style>
+        .glow-text { text-shadow: 0 0 20px rgba(99, 102, 241, 0.6); }
+        .float-anim { animation: float 6s ease-in-out infinite; }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-700 bg-gray-50 h-screen flex flex-col overflow-hidden">
+
+    <header class="absolute top-0 w-full p-6 flex justify-between items-center z-10">
+        <a href="/" class="flex items-center gap-2">
+            <div class="w-10 h-10 bg-gradient-to-br from-blue-400 to-pink-400 rounded-full overflow-hidden flex items-center justify-center shadow-lg">
+                <img src="https://ihegootehofxyltq.public.blob.vercel-storage.com/glowy_logo.png" class="w-full h-full object-cover" alt="Logo">
+            </div>
+            <span class="text-2xl font-extrabold text-glowy-dark tracking-wide">GLOWY</span>
+        </a>
+        <div class="flex gap-4">
+             <button onclick="setLang('ro')" class="font-bold hover:text-glowy transition" id="btn-ro">RO</button> | 
+             <button onclick="setLang('ru')" class="font-bold text-gray-400 hover:text-glowy transition" id="btn-ru">RU</button>
+        </div>
+    </header>
+
+    <main class="flex-grow flex flex-col items-center justify-center text-center px-4 relative">
+        
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-100 rounded-full blur-3xl opacity-50 -z-10"></div>
+
+        <div class="float-anim mb-6 text-glowy text-9xl md:text-[12rem] font-extrabold leading-none glow-text relative">
+            404
+            <div class="text-4xl absolute -bottom-4 right-0 rotate-12">🌙</div>
+        </div>
+
+        <h1 class="text-2xl md:text-4xl font-bold text-gray-800 mb-4" data-i18n="title">
+            Ups! S-a făcut întuneric...
+        </h1>
+        
+        <p class="text-lg text-gray-600 mb-10 max-w-md mx-auto" data-i18n="desc">
+            Pagina pe care o cauți s-a ascuns sub pătură și nu o putem găsi.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 w-full max-w-md justify-center">
+            <a href="/#catalog" class="bg-glowy hover:bg-glowy-dark text-white font-bold py-4 px-8 rounded-full shadow-xl transition transform hover:scale-105 flex items-center justify-center gap-2">
+                <i class="fa-solid fa-gift"></i>
+                <span data-i18n="btn_catalog">Mergi la Catalog</span>
+            </a>
+            
+            <a href="/" class="bg-white border-2 border-gray-200 hover:border-glowy text-gray-700 hover:text-glowy font-bold py-4 px-8 rounded-full transition flex items-center justify-center gap-2">
+                <i class="fa-solid fa-home"></i>
+                <span data-i18n="btn_home">Pagina Principală</span>
+            </a>
+        </div>
+
+    </main>
+
+    <script>
+        const texts = {
+            ro: {
+                title: "Ups! S-a făcut întuneric...",
+                desc: "Pagina pe care o cauți s-a ascuns sub pătură și nu o putem găsi.",
+                btn_catalog: "Mergi la Catalog",
+                btn_home: "Pagina Principală"
+            },
+            ru: {
+                title: "Ой! Стало темно...",
+                desc: "Страница, которую вы ищете, спряталась под одеялом, и мы не можем её найти.",
+                btn_catalog: "Перейти в каталог",
+                btn_home: "На главную"
+            }
+        };
+
+        function setLang(lang) {
+            // Обновляем тексты
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (texts[lang][key]) el.innerText = texts[lang][key];
+            });
+
+            // Обновляем стили кнопок
+            document.getElementById('btn-ro').className = lang === 'ro' ? "font-bold text-glowy" : "font-bold text-gray-400 hover:text-glowy";
+            document.getElementById('btn-ru').className = lang === 'ru' ? "font-bold text-glowy" : "font-bold text-gray-400 hover:text-glowy";
+            
+            // Сохраняем выбор (опционально)
+            try { localStorage.setItem('glowy_lang', lang); } catch(e){}
+        }
+
+        // Инициализация
+        const savedLang = localStorage.getItem('glowy_lang') || 'ro';
+        setLang(savedLang);
+    </script>
+</body>
+</html>
