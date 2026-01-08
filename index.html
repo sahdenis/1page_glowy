@@ -1032,11 +1032,24 @@
 
         // NEW: URL Parameter Logic
         function setLanguage(lang) {
-            const url = new URL(window.location);
-            url.searchParams.set('lang', lang);
-            window.history.pushState({}, '', url);
-            changeLang(lang);
+    const url = new URL(window.location);
+    url.searchParams.set('lang', lang);
+    window.history.pushState({}, '', url);
+    changeLang(lang);
+    
+    // --- ДОБАВИТЬ ЭТО ДЛЯ SEO ---
+    const canonical = document.getElementById('canonicalLink');
+    if (canonical) {
+        // Если язык ro - каноникал на корень или на ?lang=ro
+        // Если язык ru - каноникал ОБЯЗАТЕЛЬНО на ?lang=ru
+        if (lang === 'ro') {
+             canonical.href = 'https://glowy.md/';
+        } else {
+             canonical.href = 'https://glowy.md/?lang=' + lang;
         }
+    }
+    // -----------------------------
+}
 
         function getLanguageFromUrl() {
             const params = new URLSearchParams(window.location.search);

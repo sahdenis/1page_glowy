@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://glowy.md/</loc>
+    <lastmod>2023-10-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ro-MD" href="https://glowy.md/?lang=ro"/>
+    <xhtml:link rel="alternate" hreflang="ru-MD" href="https://glowy.md/?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://glowy.md/"/>
+    
+    <image:image>
+      <image:loc>https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/pineapple/pled_pineapple_50-60%40gallery_common%401.jpg</image:loc>
+      <image:title>Patură luminescentă Ananas - Glowy.md</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://glowy.md/?lang=ro</loc>
+    <lastmod>2023-10-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ro-MD" href="https://glowy.md/?lang=ro"/>
+    <xhtml:link rel="alternate" hreflang="ru-MD" href="https://glowy.md/?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://glowy.md/"/>
+  </url>
+
+  <url>
+    <loc>https://glowy.md/?lang=ru</loc>
+    <lastmod>2023-10-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ro-MD" href="https://glowy.md/?lang=ro"/>
+    <xhtml:link rel="alternate" hreflang="ru-MD" href="https://glowy.md/?lang=ru"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://glowy.md/"/>
+    
+    <image:image>
+      <image:loc>https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_family/pled_dino_family_50-60%40gallery_common%401.jpg</image:loc>
+      <image:title>Светящийся плед Динозавры - Glowy.md</image:title>
+      <image:caption>Детский плед светящийся в темноте</image:caption>
+    </image:image>
+  </url>
+
+</urlset>

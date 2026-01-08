@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Блокируем технические запросы и API
+Disallow: /api/
+Disallow: /cdn-cgi/
+
+# Указываем путь к карте сайта
+Sitemap: https://glowy.md/sitemap.xml
