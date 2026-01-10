@@ -30,19 +30,28 @@ export default async function handler(req, res) {
   });
   tasks.push(tgPromise);
 
-  // --- Задача 2: Отправка в Google Sheets (если URL задан) ---
-  if (GOOGLE_URL && sheetData) {
-    const sheetPromise = fetch(GOOGLE_URL, {
-        method: "POST",
-        body: JSON.stringify(sheetData),
-        // Используем text/plain, чтобы избежать проблем с CORS и preflight (стандарт для Google Scripts)
-        headers: { "Content-Type": "text/plain;charset=utf-8" }, 
-    }).then(async (res) => {
-        if (!res.ok) throw new Error(`Google Sheet Error: ${res.statusText}`);
-        return res;
-    });
-    tasks.push(sheetPromise);
-  }
+// --- ЗАДАЧА 2: Отправка в GOOGLE SHEETS ---
+            if (GOOGLE_SCRIPT_URL && GOOGLE_SCRIPT_URL.startsWith('http')) {
+                // ИСПОЛЬЗУЕМ URLSearchParams ВМЕСТО FormData
+                const params = new URLSearchParams();
+                
+                // Важно: Имена ключей ('Name', 'Phone') должны ТОЧНО совпадать 
+                // с заголовками в первой строке вашей Google Таблицы!
+                params.append('Date', new Date().toLocaleString());
+                params.append('Product', fullItemName);
+                params.append('Price', currentPrice);
+                params.append('Name', name);
+                params.append('Phone', phone);
+                params.append('Email', email);
+                params.append('Message', address);
+
+                const sheetPromise = fetch(GOOGLE_SCRIPT_URL, {
+                    method: 'POST',
+                    body: params, // Отправляем как параметры URL
+                    mode: 'no-cors' 
+                });
+                tasks.push(sheetPromise);
+            }
 
   try {
     // Ждем выполнения всех задач
