@@ -1,234 +1,207 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <!-- Facebook Pixel Code -->
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.agent='plhoroshop';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,"script",
-  "https://connect.facebook.net/en_US/fbevents.js");
-  fbq('init', "{SYSTEM_ID}");
-  fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id={SYSTEM_ID}&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Facebook Pixel Code -->
-    <meta name="google-site-verification" content="Ewo0SfV8j0wVdRY0qxPX3oOvyTf0No-efs7Ns3hZdKk" />
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQLJNECB22"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-ZQLJNECB22');
-</script>
-    <link rel="icon" type="image/png" href="https://ihegootehofxyltq.public.blob.vercel-storage.com/favicon.png" />
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glowy.md - Catalog de pături magice</title>
+    <meta name="description" content="Pături care luminează în întuneric. Catalog online.">
+    <link rel="icon" type="image/png" href="https://ihegootehofxyltq.public.blob.vercel-storage.com/favicon.png" />
     
-    <title>Glowy.md - Pături luminescente magice</title>
-    <meta name="description" content="Pături care luminează în întuneric pentru copii. Cadoul perfect, livrare în Moldova.">
-    <meta name="keywords" content="pături copii, pleduri luminescente, cadou copii, glowy md, unicorn, dino, livrare moldova">
-    
-    <link rel="canonical" href="https://glowy.md/" id="canonicalLink">
-    <link rel="alternate" hreflang="ro-MD" href="https://glowy.md/?lang=ro" id="hrefRo">
-    <link rel="alternate" hreflang="ru-MD" href="https://glowy.md/?lang=ru" id="hrefRu">
-    <link rel="alternate" hreflang="x-default" href="https://glowy.md/" id="hrefDef">
-    
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://glowy.md/">
-    <meta property="og:title" content="Glowy.md - Pături luminescente magice">
-    <meta property="og:description" content="Magia care încălzește. Alege cel mai bun cadou pentru copilul tău.">
-    <meta property="og:image" content="https://ihegootehofxyltq.public.blob.vercel-storage.com/glowy_logo.png">
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Store",
-      "name": "Glowy.md",
-      "image": "https://ihegootehofxyltq.public.blob.vercel-storage.com/glowy_logo.png",
-      "telephone": "+37361209209",
-      "url": "https://glowy.md/",
-      "priceRange": "50-399 MDL",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Chisinau",
-        "addressCountry": "MD"
-      }
-    }
-    </script>
-    
-    <script type="application/ld+json" id="productSchema"></script>
-
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZQLJNECB22"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZQLJNECB22');
+    </script>
+    
+    <script src="products.js"></script>
+    <script src="translations.js"></script>
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        glowy: { light: '#a5b4fc', DEFAULT: '#6366f1', dark: '#f472b6', pink: '#f472b6' }
-                    },
-                    fontFamily: { sans: ['Nunito', 'sans-serif'] }
+                    colors: { glowy: { light: '#a5b4fc', DEFAULT: '#6366f1', dark: '#f472b6', pink: '#f472b6' } },
+                    fontFamily: { sans: ['Nunito', 'sans-serif'] },
+                    animation: { 'fade-in-up': 'fadeInUp 0.3s ease-out' },
+                    keyframes: { fadeInUp: { '0%': { opacity: '0', transform: 'translateY(20px)' }, '100%': { opacity: '1', transform: 'translateY(0)' } } }
                 }
             }
         }
     </script>
     <style>
         .glass { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
-        .glow-text { text-shadow: 0 0 10px rgba(99, 102, 241, 0.5); }
+        .glow-text { text-shadow: 0 0 15px rgba(99, 102, 241, 0.4); }
         .pulse-btn { animation: pulse-glow 2s infinite; }
-        @keyframes pulse-glow {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(244, 114, 182, 0.7); }
-            70% { box-shadow: 0 0 0 15px rgba(244, 114, 182, 0); }
-        }
+        @keyframes pulse-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(244, 114, 182, 0.7); } 70% { box-shadow: 0 0 0 15px rgba(244, 114, 182, 0); } }
         html { scroll-behavior: smooth; }
         .scrollbar-hide::-webkit-scrollbar { display: none; }
-        .size-btn.active { background-color: #6366f1; color: white; border-color: #6366f1; }
-        .thumb { opacity: 0.7; transition: all 0.2s; }
-        .thumb.active, .thumb:hover { opacity: 1; border-color: #6366f1; transform: scale(1.05); }
         
+        .size-btn { border: 1px solid #e5e7eb; background: #f9fafb; color: #374151; }
+        .size-btn:hover { border-color: #6366f1; color: #6366f1; }
+        .size-btn.active { background-color: #6366f1; color: white; border-color: #6366f1; }
+
+        /* Стили для слайдера */
         .slider-arrow {
             position: absolute; top: 50%; transform: translateY(-50%);
-            background: rgba(255,255,255,0.7); border-radius: 50%;
-            width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: all 0.2s; z-index: 10; color: #4b5563;
+            width: 30px; height: 30px; background: rgba(255,255,255,0.8);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 20; color: #333; transition: 0.2s;
+            opacity: 0; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
-        .slider-arrow:hover { background: white; color: #6366f1; }
+        .group:hover .slider-arrow { opacity: 1; }
+        .slider-arrow:hover { background: white; color: #6366f1; transform: translateY(-50%) scale(1.1); }
         .slider-prev { left: 10px; }
         .slider-next { right: 10px; }
+
+        .thumb { border: 2px solid transparent; transition: all 0.2s; cursor: pointer; opacity: 0.6; }
+        .thumb.active, .thumb:hover { border-color: #6366f1; opacity: 1; }
     </style>
 </head>
-<body class="font-sans text-gray-700 bg-gray-50">
+<body class="font-sans text-gray-700 bg-gray-50 flex flex-col min-h-screen">
 
     <header class="fixed w-full top-0 z-50 glass shadow-sm transition-all duration-300">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <a href="#" class="flex items-center gap-2">
-               <div class="w-10 h-10 bg-gradient-to-br from-blue-400 to-pink-400 rounded-full overflow-hidden flex items-center justify-center shadow-lg">
-  <img 
-    src="https://ihegootehofxyltq.public.blob.vercel-storage.com/glowy_logo.png"
-    class="w-full h-full object-cover rounded-full"
-    alt="Logo"
-  />
-</div>
-                <span class="text-2xl font-extrabold text-glowy-dark tracking-wide">GLOWY</span>
+            <a href="#" class="flex items-center gap-2 group">
+               <div class="w-10 h-10 bg-gradient-to-br from-blue-400 to-pink-400 rounded-full overflow-hidden flex items-center justify-center shadow-lg group-hover:scale-105 transition">
+                  <img src="https://ihegootehofxyltq.public.blob.vercel-storage.com/glowy_logo.png" class="w-full h-full object-cover rounded-full" alt="Logo"/>
+               </div>
+               <span class="text-2xl font-extrabold text-glowy-dark tracking-wide group-hover:text-glowy transition">GLOWY</span>
             </a>
 
-            <div class="flex items-center gap-4">
-                <button onclick="setLanguage('ro')" class="font-bold hover:text-glowy transition" id="btn-ro">RO</button> | 
+            <div class="flex items-center gap-4 text-sm">
+                <button onclick="setLanguage('ro')" class="font-bold hover:text-glowy transition" id="btn-ro">RO</button> 
+                <span class="text-gray-300">|</span>
                 <button onclick="setLanguage('ru')" class="font-bold text-gray-400 hover:text-glowy transition" id="btn-ru">RU</button>
             </div>
 
-            <nav class="hidden md:flex gap-6 font-semibold text-gray-600 ml-8">
-                <a href="#about" class="hover:text-glowy-pink transition" data-i18n="nav_about">Despre noi</a>
-                <a href="#catalog" class="hover:text-glowy-pink transition" data-i18n="nav_catalog">Catalog</a>
-                <a href="#delivery" class="hover:text-glowy-pink transition" data-i18n="nav_delivery">Livrare</a>
-                <a href="#contacts" class="hover:text-glowy-pink transition" data-i18n="nav_contacts">Contacte</a>
+            <nav class="hidden md:flex gap-8 font-bold text-gray-600 ml-8 text-sm uppercase tracking-wide">
+                <a href="#about" class="hover:text-glowy-pink transition relative group"><span data-i18n="nav_about">Despre noi</span></a>
+                <a href="#catalog" class="hover:text-glowy-pink transition relative group"><span data-i18n="nav_catalog">Colecție</span></a>
+                <a href="#delivery" class="hover:text-glowy-pink transition relative group"><span data-i18n="nav_delivery">Livrare</span></a>
+                <a href="#contacts" class="hover:text-glowy-pink transition relative group"><span data-i18n="nav_contacts">Contacte</span></a>
             </nav>
-            
-             <button onclick="document.getElementById('mobMenu').classList.toggle('hidden')" class="md:hidden text-2xl text-glowy-dark">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-        </div>
-        <div id="mobMenu" class="hidden md:hidden bg-white border-t p-4 flex flex-col gap-4 shadow-lg absolute w-full">
-            <a href="#about" class="block py-2" onclick="this.parentElement.classList.add('hidden')">Despre noi</a>
-            <a href="#catalog" class="block py-2" onclick="this.parentElement.classList.add('hidden')">Catalog</a>
-            <a href="#delivery" class="block py-2" onclick="this.parentElement.classList.add('hidden')">Livrare</a>
-            <a href="#contacts" class="block py-2" onclick="this.parentElement.classList.add('hidden')">Contacte</a>
         </div>
     </header>
 
-    <section class="mt-16 relative h-[550px] overflow-hidden group">
-        <div class="slide absolute inset-0 bg-gray-900">
-            <img src="https://ihegootehofxyltq.public.blob.vercel-storage.com/top_baners/1440_432.png" 
-                 alt="Glowy Hero Banner" width="1920" height="600"
-                 onerror="this.src='https://placehold.co/1920x600/1e1b4b/FFF?text=GLOWY'" 
-                 class="w-full h-full object-cover opacity-60">
+    <section class="mt-16 relative h-[500px] overflow-hidden">
+        <div class="absolute inset-0 bg-gray-900">
+            <img src="https://ihegootehofxyltq.public.blob.vercel-storage.com/top_baners/1440_432.png" alt="Glowy Banner" class="w-full h-full object-cover opacity-60 animate-[pulse_10s_infinite_alternate]">
+            <div class="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
             <div class="absolute inset-0 flex items-center justify-center text-center">
-                <div class="text-white px-4 max-w-2xl">
-                    <h1 class="text-4xl md:text-6xl font-bold mb-6 glow-text" data-i18n="hero_title">Magia care încălzește</h1>
-                    <p class="text-xl md:text-2xl mb-8" data-i18n="hero_subtitle">Pături care luminează în întuneric și oferă o poveste.</p>
-                    <a href="#catalog" class="bg-glowy-pink hover:bg-pink-600 text-white font-bold py-4 px-10 rounded-full transition transform hover:scale-105 shadow-xl border-2 border-white/20" data-i18n="hero_btn">
-                        Spre catalog
-                    </a>
+                <div class="text-white px-4 max-w-3xl">
+                    <h1 class="text-4xl md:text-6xl font-extrabold mb-6 glow-text leading-tight" data-i18n="hero_title">Magia care încălzește</h1>
+                    <p class="text-lg md:text-2xl mb-10 text-gray-100 font-light" data-i18n="hero_subtitle">Descoperă colecția noastră de pături luminescente.</p>
+                    <a href="#catalog" class="bg-white text-glowy-dark hover:bg-glowy-pink hover:text-white font-bold py-4 px-10 rounded-full transition-all shadow-xl"><span data-i18n="hero_btn">Vezi colecția</span></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="catalog" class="py-16 bg-white">
+    <section id="catalog" class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center text-gray-800 mb-10" data-i18n="catalog_title">Cele mai vândute 🌟</h2>
-            
-            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8"></div>
-            
-            <div class="text-center mt-12" id="catalogBtnContainer">
-                <button onclick="toggleFullCatalog()" id="catalogBtn" class="bg-transparent border-2 border-glowy text-glowy font-bold py-3 px-10 rounded-full hover:bg-glowy hover:text-white transition" data-i18n="btn_full_catalog">
-                    Vezi tot catalogul
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-i18n="catalog_title">Colecția Noastră ✨</h2>
+                <div class="w-24 h-1 bg-glowy mx-auto rounded-full"></div>
+            </div>
+            <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10"></div>
+            <div class="text-center mt-16" id="catalogBtnContainer">
+                <button onclick="toggleFullCatalog()" id="catalogBtn" class="group relative px-8 py-3 font-bold text-glowy transition-colors uppercase tracking-wider">
+                    <span class="absolute inset-0 border-2 border-glowy rounded-full"></span>
+                    <span class="relative group-hover:text-glowy-dark transition-colors" data-i18n="btn_full_catalog">Arată tot</span>
                 </button>
             </div>
-            
-            <div id="full-catalog-grid" class="hidden mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 transition-all"></div>
+            <div id="full-catalog-grid" class="hidden mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 transition-all"></div>
         </div>
     </section>
 
-    <section class="py-8 bg-gray-50">
+    <section class="py-10 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div onclick="openOrderModal('Promo: Set + Rucsac')" class="relative rounded-2xl overflow-hidden h-64 shadow-md group cursor-pointer transform hover:scale-[1.02] transition">
-                    <img src="https://ihegootehofxyltq.public.blob.vercel-storage.com/baners/Gemini_Generated_Image_fipvh1fipvh1fipv%20%281%29.png" 
-                         alt="Set Cadou Rucsac" width="800" height="400" loading="lazy"
-                         class="w-full h-full object-cover">
+                <div onclick="openContactPopup(null, 'Promo: Set + Rucsac')" class="relative rounded-2xl overflow-hidden h-64 shadow-md group cursor-pointer transform hover:scale-[1.02] transition">
+                    <img src="https://ihegootehofxyltq.public.blob.vercel-storage.com/baners/Gemini_Generated_Image_fipvh1fipvh1fipv%20%281%29.png" alt="Set Cadou Rucsac" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8">
                         <h3 class="text-white text-2xl font-bold mb-1" data-i18n="banner1_title">Set Avantajos!</h3>
                         <p class="text-white mb-4" data-i18n="banner1_desc">Pătură + Rucsac doar la +28 MDL</p>
-                        <span class="bg-white text-glowy-pink font-bold px-4 py-2 rounded-lg w-max text-sm shadow-lg" data-i18n="btn_order">Contactează managerul</span>
+                        <span class="bg-white text-glowy-pink font-bold px-4 py-2 rounded-lg w-max text-sm shadow-lg" data-i18n="btn_ask_details">Întreabă detalii</span>
                     </div>
                 </div>
-                <div onclick="openOrderModal('Promo: Ambalaj Cadou')" class="relative rounded-2xl overflow-hidden h-64 shadow-md group cursor-pointer transform hover:scale-[1.02] transition">
-                    <img src="https://ihegootehofxyltq.public.blob.vercel-storage.com/baners/Gemini_Generated_Image_jwcu3hjwcu3hjwcu%20%281%29.png" 
-                         alt="Ambalaj Cadou" width="800" height="400" loading="lazy"
-                         class="w-full h-full object-cover">
+                <div onclick="openContactPopup(null, 'Promo: Ambalaj Cadou')" class="relative rounded-2xl overflow-hidden h-64 shadow-md group cursor-pointer transform hover:scale-[1.02] transition">
+                    <img src="https://ihegootehofxyltq.public.blob.vercel-storage.com/baners/Gemini_Generated_Image_jwcu3hjwcu3hjwcu%20%281%29.png" alt="Ambalaj Cadou" class="w-full h-full object-cover">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8">
                         <h3 class="text-white text-2xl font-bold mb-1" data-i18n="banner2_title">Gata de dăruit</h3>
-                        <p class="text-white mb-4" data-i18n="banner2_desc">Ambalaj cu panglică de satin (+50 MDL)</p>
-                        <span class="bg-white text-glowy-dark font-bold px-4 py-2 rounded-lg w-max text-sm shadow-lg" data-i18n="btn_want">Vreau ambalaj</span>
+                        <p class="text-white mb-4" data-i18n="banner2_desc">Ambalaj cu panglică de satin</p>
+                        <span class="bg-white text-glowy-dark font-bold px-4 py-2 rounded-lg w-max text-sm shadow-lg" data-i18n="btn_want_pack">Vreau ambalaj</span>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-gradient-to-b from-white to-blue-50/30">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4" data-i18n="how_title">Cum funcționează magia? ✨</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto" data-i18n="how_subtitle">Este simplu! Urmează 3 pași.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto relative">
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 text-center group border border-gray-50">
+                    <div class="w-20 h-20 mx-auto bg-yellow-100 text-yellow-500 rounded-full flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition"><i class="fa-regular fa-sun animate-[spin_10s_linear_infinite]"></i></div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-i18n="step1_head">1. Încarcă</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" data-i18n="step1_body">Lasă pătura la lumina.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 text-center group border border-gray-50">
+                    <div class="w-20 h-20 mx-auto bg-blue-100 text-blue-500 rounded-full flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition"><i class="fa-solid fa-hourglass-half"></i></div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-i18n="step2_head">2. Așteaptă</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" data-i18n="step2_body">Materialul absoarbe lumina.</p>
+                </div>
+                <div class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 text-center group border border-gray-50">
+                    <div class="w-20 h-20 mx-auto bg-indigo-100 text-glowy rounded-full flex items-center justify-center text-4xl mb-6 group-hover:scale-110 transition"><i class="fa-solid fa-moon"></i></div>
+                    <h3 class="text-xl font-bold text-gray-800 mb-3" data-i18n="step3_head">3. Magie!</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed" data-i18n="step3_body">Stinge lumina și bucură-te!</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section id="about" class="py-16 bg-white">
-        <div class="container mx-auto px-4 max-w-4xl">
-            <h2 class="text-3xl font-bold mb-8 text-glowy-dark text-center" data-i18n="about_title">Bine ați venit la Glowy.md!</h2>
+        <div class="container mx-auto px-4 max-w-4xl text-center">
+            <h2 class="text-3xl font-bold mb-8 text-glowy-dark" data-i18n="about_title">Bine ați venit la Glowy.md!</h2>
             <div class="text-lg text-gray-600 leading-relaxed space-y-6 text-justify md:text-center" data-i18n="about_text"></div>
+            
+            <div class="mt-10 flex flex-wrap justify-center gap-4">
+                <div class="flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-full text-sm font-bold text-gray-500 border border-gray-100">
+                    <i class="fa-solid fa-check text-green-500"></i> <span data-i18n="trust_quality">Calitate Premium</span>
+                </div>
+                <div class="flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-full text-sm font-bold text-gray-500 border border-gray-100">
+                    <i class="fa-solid fa-check text-green-500"></i> <span data-i18n="trust_hypo">Hipoalergenic</span>
+                </div>
+                <div class="flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-full text-sm font-bold text-gray-500 border border-gray-100">
+                    <i class="fa-solid fa-check text-green-500"></i> <span data-i18n="trust_delivery">Livrare Sigură</span>
+                </div>
+            </div>
         </div>
     </section>
 
     <section id="delivery" class="py-16 bg-blue-50">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start max-w-5xl mx-auto">
                 <div>
-                    <h3 class="text-2xl font-bold mb-6 text-gray-800 flex items-center gap-3">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800 flex items-center gap-3 justify-center md:justify-start">
                         <i class="fa-solid fa-truck-fast text-glowy"></i> <span data-i18n="delivery_title">Livrare Rapidă</span>
                     </h3>
-                    <div class="prose text-gray-600 leading-relaxed" data-i18n="delivery_text"></div>
+                    <div class="prose text-gray-600 leading-relaxed text-center md:text-left" data-i18n="delivery_text"></div>
                 </div>
                 <div>
-                    <h3 class="text-2xl font-bold mb-6 text-gray-800 flex items-center gap-3">
+                    <h3 class="text-2xl font-bold mb-6 text-gray-800 flex items-center gap-3 justify-center md:justify-start">
                         <i class="fa-regular fa-credit-card text-glowy"></i> <span data-i18n="payment_title">Plată Comodă</span>
                     </h3>
-                    <div class="prose text-gray-600 leading-relaxed" data-i18n="payment_text"></div>
+                    <div class="prose text-gray-600 leading-relaxed text-center md:text-left" data-i18n="payment_text"></div>
                 </div>
             </div>
         </div>
@@ -238,1243 +211,461 @@
         <div class="container mx-auto px-4 grid md:grid-cols-3 gap-8 text-center md:text-left">
             <div>
                 <h4 class="text-xl font-bold mb-4 text-glowy-light">Glowy.md</h4>
-                <p class="text-gray-400 text-sm">Magia care încălzește visele.</p>
+                <p class="text-gray-400 text-sm" data-i18n="footer_desc">Magia care aduce zâmbete copiilor prin lumină și confort.</p>
             </div>
             <div>
                 <h4 class="text-xl font-bold mb-4 text-glowy-light" data-i18n="nav_contacts">Contacte</h4>
                 <ul class="space-y-3 text-gray-300">
-                    <li>
-                        <a href="tel:+373-61-209-209" class="hover:text-glowy-light transition flex items-center justify-center md:justify-start gap-2">
-                            <i class="fa-solid fa-phone"></i> <span>+373-61-209-209</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="mailto:glowyblankets@gmail.com" class="hover:text-glowy-light transition flex items-center justify-center md:justify-start gap-2">
-                            <i class="fa-solid fa-envelope"></i> <span>glowyblankets@gmail.com</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="https://maps.google.com/?q=Chisinau,Moldova" target="_blank" class="hover:text-glowy-light transition flex items-center justify-center md:justify-start gap-2">
-                            <i class="fa-solid fa-location-dot"></i> <span>Chișinău, Moldova</span>
-                        </a>
-                    </li>
+                    <li><a href="tel:+37361209209" class="hover:text-glowy-light transition flex items-center justify-center md:justify-start gap-2"><i class="fa-solid fa-phone"></i> <span>+373-61-209-209</span></a></li>
+                    <li><a href="mailto:glowyblankets@gmail.com" class="hover:text-glowy-light transition flex items-center justify-center md:justify-start gap-2"><i class="fa-solid fa-envelope"></i> <span>glowyblankets@gmail.com</span></a></li>
+                    <li><a href="#" class="hover:text-glowy-light transition flex items-center justify-center md:justify-start gap-2 pointer-events-none"><i class="fa-solid fa-location-dot"></i> <span>Chișinău, Moldova</span></a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="text-xl font-bold mb-4 text-glowy-light">Social</h4>
                 <div class="flex gap-6 justify-center md:justify-start text-3xl">
-                    <a href="https://www.instagram.com/glowy.md/" target="_blank" class="hover:text-glowy-pink transition" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="https://www.facebook.com/profile.php?id=61568285020622" target="_blank" class="hover:text-blue-500 transition" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="https://www.tiktok.com/@glowy.md8" target="_blank" class="hover:text-black transition bg-white text-black rounded px-1 h-8 flex items-center" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="https://www.instagram.com/glowy.md/" target="_blank" class="hover:text-glowy-pink transition"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61568285020622" target="_blank" class="hover:text-blue-500 transition"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://www.tiktok.com/@glowy.md8" target="_blank" class="hover:text-white transition"><i class="fa-brands fa-tiktok"></i></a>
                 </div>
             </div>
         </div>
+        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-500 text-xs">
+            &copy; 2025 Glowy.md. All rights reserved.
+        </div>
     </footer>
 
-    <button onclick="openOrderModal('Intrebare generala')" class="fixed bottom-6 right-6 bg-glowy-pink hover:bg-pink-600 text-white p-4 rounded-full shadow-2xl z-40 pulse-btn flex items-center gap-3 transition transform hover:scale-110">
-        <i class="fa-solid fa-comment-dots text-xl"></i>
-        <span class="hidden md:inline font-bold" data-i18n="btn_contact_manager">Contactează managerul</span>
+    <button onclick="openContactPopup(null, 'General')" class="fixed bottom-6 right-6 bg-glowy-pink hover:bg-pink-600 text-white w-14 h-14 rounded-full shadow-2xl z-40 pulse-btn flex items-center justify-center transition transform hover:scale-110 group">
+        <i class="fa-solid fa-comment-dots text-2xl group-hover:rotate-12 transition"></i>
     </button>
 
-    <div id="lightbox" class="fixed inset-0 z-[60] bg-black/90 hidden flex items-center justify-center p-4 cursor-pointer" onclick="document.getElementById('lightbox').classList.add('hidden')">
-        <img id="lightboxImg" src="" class="max-h-screen max-w-full rounded shadow-2xl object-contain cursor-default" onclick="event.stopPropagation()">
-        <button class="absolute top-4 right-4 text-white text-4xl hover:text-gray-300">×</button>
-    </div>
-
-    <div id="productModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm" onclick="if(event.target.id==='productModal') closeModal('productModal')">
-        <div class="bg-white rounded-2xl w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 overflow-hidden shadow-2xl relative h-[90vh] md:h-auto">
-            <button onclick="closeModal('productModal')" class="absolute top-4 right-4 bg-gray-100 w-10 h-10 rounded-full hover:bg-gray-200 z-10 flex items-center justify-center"><i class="fa-solid fa-times"></i></button>
+    <div id="productModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity" onclick="if(event.target.id==='productModal') closeModal('productModal')">
+        <div class="bg-white rounded-2xl w-full max-w-4xl grid grid-cols-1 md:grid-cols-2 overflow-hidden shadow-2xl relative h-[90vh] md:h-auto animate-fade-in-up">
+            <button onclick="closeModal('productModal')" class="absolute top-4 right-4 bg-gray-100 w-8 h-8 rounded-full hover:bg-gray-200 z-10 flex items-center justify-center transition"><i class="fa-solid fa-times"></i></button>
             
-            <div class="bg-gray-50 p-4 flex flex-col justify-center h-full relative">
-                <div class="w-full aspect-square mb-4 rounded-xl overflow-hidden bg-white relative group shadow-sm">
-                    <img id="mImg" src="" alt="Product Detail" width="500" height="500" class="w-full h-full object-cover cursor-zoom-in" onclick="openLightbox(this.src)">
-                    <div class="slider-arrow slider-prev" onclick="changeModalImage(-1)"><i class="fa-solid fa-chevron-left"></i></div>
-                    <div class="slider-arrow slider-next" onclick="changeModalImage(1)"><i class="fa-solid fa-chevron-right"></i></div>
+            <div class="bg-gray-50 p-6 flex flex-col justify-center items-center h-full relative">
+                <div class="relative w-full aspect-square bg-white rounded-lg shadow-sm overflow-hidden group">
+                    <img id="mImg" src="" class="w-full h-full object-contain cursor-zoom-in">
+                    <div id="modalArrows" class="hidden">
+                        <div class="slider-arrow slider-prev" onclick="changeModalImage(-1)"><i class="fa-solid fa-chevron-left"></i></div>
+                        <div class="slider-arrow slider-next" onclick="changeModalImage(1)"><i class="fa-solid fa-chevron-right"></i></div>
+                    </div>
                 </div>
-                <div id="mThumbnails" class="flex gap-2 overflow-x-auto scrollbar-hide py-2 px-1"></div>
+                <div id="mThumbnails" class="flex gap-2 mt-4 overflow-x-auto w-full px-1 scrollbar-hide justify-center"></div>
             </div>
             
             <div class="p-8 flex flex-col overflow-y-auto">
-                <h2 id="mTitle" class="text-2xl md:text-3xl font-bold mb-2 text-gray-800"></h2>
+                <h2 id="mTitle" class="text-2xl md:text-3xl font-bold mb-3 text-gray-800"></h2>
                 
-                <div class="mb-6 bg-gray-50 p-4 rounded-xl border border-gray-100">
-                    <p class="text-sm text-gray-500 mb-2 font-bold flex items-center gap-2">
-                        <i class="fa-solid fa-ruler-combined text-glowy"></i> <span data-i18n="label_size">Mărime:</span>
-                    </p>
+                <div class="mb-6">
+                    <p class="text-xs text-gray-400 uppercase font-bold tracking-wider mb-2" data-i18n="label_size">Alege Dimensiunea:</p>
                     <div id="sizeContainer" class="flex flex-wrap gap-2"></div>
                 </div>
 
-                <div class="text-3xl font-bold text-glowy mb-6 flex items-baseline gap-2">
-                    <span id="mPrice"></span> MDL
+                <div class="mb-6 bg-blue-50/50 p-4 rounded-xl border border-blue-50 inline-block w-full">
+                    <p class="text-xs text-gray-500 mb-1" data-i18n="price_label">Preț estimativ:</p>
+                    <div id="mPriceContainer" class="flex items-baseline gap-2"></div>
                 </div>
                 
-                <div id="mDesc" class="text-gray-600 mb-8 leading-relaxed text-sm md:text-base"></div>
+                <div id="mDesc" class="text-gray-600 mb-8 leading-relaxed text-sm md:text-base border-t pt-4"></div>
                 
-                <button onclick="orderFromProduct()" class="w-full bg-glowy hover:bg-glowy-dark text-white font-bold py-4 rounded-xl shadow-lg transition mt-auto transform active:scale-95" data-i18n="btn_send_req">
-                    Contactează managerul
+                <button id="modalActionBtn" class="w-full bg-glowy hover:bg-glowy-dark text-white font-bold py-4 rounded-xl shadow-lg transition mt-auto flex items-center justify-center gap-2 group">
+                    <span data-i18n="btn_interest">Mă interesează</span> 
+                    <i class="fa-regular fa-paper-plane group-hover:translate-x-1 transition"></i>
                 </button>
             </div>
         </div>
     </div>
 
-    <div id="orderModal" class="fixed inset-0 bg-black/60 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm" onclick="closeOnClick(event, 'orderModal')">
-        <div class="bg-white rounded-2xl w-full max-w-md p-8 shadow-2xl relative">
+    <div id="contactModal" class="fixed inset-0 bg-black/80 z-[60] hidden flex items-center justify-center p-4 backdrop-blur-sm" onclick="if(event.target.id==='contactModal') document.getElementById('contactModal').classList.add('hidden')">
+        <div class="bg-white rounded-2xl w-full max-w-sm p-6 shadow-2xl relative transform transition-all scale-100 animate-fade-in-up">
+            <button onclick="document.getElementById('contactModal').classList.add('hidden')" class="absolute top-3 right-3 text-gray-400 hover:text-gray-600 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100"><i class="fa-solid fa-times"></i></button>
+            
+            <div class="text-center mb-6">
+                <div class="w-14 h-14 bg-glowy-light/20 text-glowy rounded-full flex items-center justify-center mx-auto mb-3 text-2xl"><i class="fa-regular fa-comments"></i></div>
+                <h3 class="text-xl font-bold text-gray-800" data-i18n="contact_title">Discută cu noi</h3>
+                <p class="text-xs text-gray-400 mt-2 uppercase tracking-wide">Despre:</p>
+                <p class="text-sm font-bold text-glowy-dark mt-1" id="contactProductInfo"></p>
+            </div>
+
+            <div class="flex flex-col gap-3">
+                <a id="popWA" href="#" target="_blank" class="flex items-center justify-center gap-3 p-3 rounded-xl bg-[#25D366] text-white hover:bg-[#20bd5a] transition font-bold shadow-md"><i class="fa-brands fa-whatsapp text-xl"></i> WhatsApp</a>
+                <a id="popTG" href="#" target="_blank" class="flex items-center justify-center gap-3 p-3 rounded-xl bg-[#0088cc] text-white hover:bg-[#0077b5] transition font-bold shadow-md"><i class="fa-brands fa-telegram text-xl"></i> Telegram</a>
+                <a id="popVB" href="#" target="_blank" class="flex items-center justify-center gap-3 p-3 rounded-xl bg-[#7360f2] text-white hover:bg-[#6855e0] transition font-bold shadow-md"><i class="fa-brands fa-viber text-xl"></i> Viber</a>
+                <button onclick="openOrderFormFromPopup()" class="mt-3 text-gray-400 text-xs hover:text-gray-600 underline py-2 transition"><span data-i18n="btn_use_form">Sau scrie un mesaj aici</span></button>
+            </div>
+            
+            <div class="mt-6 bg-gray-50 border border-gray-100 rounded-lg p-3 text-center">
+                <p class="text-xs text-gray-500 leading-relaxed" data-i18n="bulk_hint">Vă răspundem rapid la orice întrebare legată de stoc sau expediere.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="orderModal" class="fixed inset-0 bg-black/80 z-[70] hidden flex items-center justify-center p-4 backdrop-blur-sm" onclick="if(event.target.id==='orderModal') closeModal('orderModal')">
+        <div class="bg-white rounded-2xl w-full max-w-md p-8 shadow-2xl relative animate-fade-in-up">
             <button onclick="closeModal('orderModal')" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600"><i class="fa-solid fa-times text-xl"></i></button>
-            <h3 class="text-2xl font-bold text-center mb-6 text-gray-800" data-i18n="form_title">Solicită detalii</h3>
+            <h3 class="text-2xl font-bold text-center mb-2 text-gray-800" data-i18n="form_title">Scrie-ne un mesaj</h3>
+            <p class="text-center text-sm text-gray-500 mb-6" data-i18n="form_subtitle">Lăsați datele și vă contactăm noi.</p>
             
             <form onsubmit="submitForm(event)" class="space-y-4">
                 <input type="hidden" id="formSubject">
                 <input type="hidden" id="formSize">
                 
-                <div class="bg-blue-50 p-4 rounded-lg border border-blue-100 mb-4">
-                    <p class="text-xs text-blue-500 font-bold uppercase mb-1" id="labelProduct">Produs:</p>
-                    <p class="font-bold text-gray-800 leading-tight" id="displayProduct"></p>
-                    <p class="text-sm font-bold text-glowy mt-1" id="displaySize"></p>
+                <div class="bg-gray-50 p-3 rounded-lg border border-gray-100 text-center">
+                    <span class="text-xs text-gray-400 uppercase">Subiect:</span>
+                    <p class="font-bold text-gray-700 text-sm" id="displayProduct"></p>
                 </div>
 
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1" data-i18n="form_name">Nume</label>
-                    <input type="text" id="inpName" required class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-glowy outline-none transition">
+                <div class="space-y-3">
+                    <input type="text" id="inpName" required placeholder="Numele Dvs." class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 outline-none">
+                    <input type="tel" id="inpPhone" required placeholder="Număr de telefon" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 outline-none">
+                    <input type="email" id="inpEmail" placeholder="Email (opțional)" class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 outline-none">
+                    <textarea id="inpAddress" rows="3" placeholder="Întrebarea sau mesajul Dvs..." class="w-full px-4 py-3 rounded-xl bg-gray-50 border border-gray-200 outline-none"></textarea>
                 </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1" data-i18n="form_phone">Telefon</label>
-                    <input type="tel" id="inpPhone" required class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-glowy outline-none transition">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1">Email</label>
-                    <input type="email" id="inpEmail" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-glowy outline-none transition">
-                </div>
-                <div>
-                    <label class="block text-sm font-bold text-gray-700 mb-1" data-i18n="form_address">Adresă / Comentariu</label>
-                    <textarea id="inpAddress" rows="2" class="w-full px-4 py-3 rounded-lg bg-gray-50 border border-gray-200 focus:border-glowy outline-none transition"></textarea>
-                </div>
-                <button type="submit" id="submitBtn" class="w-full bg-glowy hover:bg-glowy-dark text-white font-bold py-4 rounded-xl shadow-md transition transform hover:-translate-y-1" data-i18n="btn_send">
-                    Trimite cererea
-                </button>
+                
+                <button type="submit" id="submitBtn" class="w-full bg-glowy hover:bg-glowy-dark text-white font-bold py-4 rounded-xl shadow-md transition" data-i18n="btn_send">Trimite mesajul</button>
             </form>
         </div>
     </div>
 
- <!-- <script src="config.js"></script> -->
-
     <script>
-        // --- DATA (25 items) ---
- const products = [
-  {
-    "id": 1,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Patură luminescentă - ananas",
-    "nameRU": "Плед светящийся в темноте - ананас",
-    "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii, cadou pentru fetita, cadou pentru fiica,cadou pentru copil, cadou de sarbatori, cadou de craciun,cadou de anul nou, fosforicent, ",
-    "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка, glow in dark, подарок для ребенка",
-    "basePrice": 299,
-    "tag": "sale",
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/pineapple/pled_pineapple_50-60%40gallery_common%401.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/pineapple/pled_pineapple_50-60%40gallery_common%402.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/pineapple/pled_pineapple_50-60%40gallery_common%403.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/pineapple/pled_pineapple_50-60%40gallery_common%404.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/pineapple/pled_pineapple_50-60%40gallery_common%405.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/pineapple/pled_pineapple_50-60%40gallery_common%406.jpg"
-    ],
-    "sizes": [
-      { "label": "127 × 152cm", "price": 299, "old_price": 399,"old_price": 399,"visible": true },
-      { "label": "152 × 203cm", "price": 399, "old_price": 499,"old_price": 499, "visible": false }
-    ],
-    "seo": { 
-        "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii, cadou pentru fetita, cadou pentru fiica,cadou pentru copil, cadou de sarbatori, cadou de craciun,cadou de anul nou, fosforicent",
-        "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка, glow in dark, подарок для ребенка",
-        "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка."
-    }
-  },
-  {
-    "id": 2,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Patură luminescentă - starpink",
-    "nameRU": "Плед светящийся в темноте - starpink",
-    "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-    "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-    "basePrice": 299,
-    "tag": "sale",
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/starpink/pled_starpink_60-80%40gallery_common%401.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/starpink/pled_starpink_60-80%40gallery_common%402.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/starpink/pled_starpink_60-80%40gallery_common%403.jpg",  
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/starpink/pled_starpink_60-80%40gallery_common%404.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/starpink/pled_starpink_60-80%40gallery_common%405.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/starpink/pled_starpink_60-80%40gallery_common%406.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/starpink/pled_starpink_60-80%40gallery_common%407.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/starpink/pled_starpink_60-80%40gallery_common%408.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/starpink/pled_starpink_60-80%40gallery_common%409.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/starpink/pled_starpink_60-80%40gallery_common%4010.jpg"
-    ],
-    "sizes": [
-      { "label": "127 × 152cm", "price": 299, "old_price": 399,"old_price": 399, "visible": true },
-      { "label": "152 × 203cm", "price": 399, "old_price": 499,"old_price": 499, "visible": true }
-    ],
-    "seo": { 
-        "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-        "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка."
-    }
-  },
-  {
-    "id": 3,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Patură luminescentă - castle",
-    "nameRU": "Плед светящийся в темноте - castle",
-    "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-    "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-    "basePrice": 299,
-    "tag": "sale",
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/castle/pled_castle_50-60%40gallery_common%401.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/castle/pled_castle_50-60%40gallery_common%402.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/castle/pled_castle_50-60%40gallery_common%403.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/castle/pled_castle_50-60%40gallery_common%404.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/castle/pled_castle_50-60%40gallery_common%405.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/castle/pled_castle_50-60%40gallery_common%406.jpg"
-    ],
-    "sizes": [
-      { "label": "127 × 152cm", "price": 299, "old_price": 399,"old_price": 399, "visible": true },
-      { "label": "152 × 203cm", "price": 399, "old_price": 499,"old_price": 499, "visible": false }
-    ],
-    "seo": { 
-        "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-        "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка."
-    }
-  },
-  {
-    "id": 4,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Patură luminescentă - butterfly_pink",
-    "nameRU": "Плед светящийся в темноте - butterfly_pink",
-    "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-    "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-    "basePrice": 299,
-    "tag": "sale",
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/butterfly_pink/pled_butterfly_pink_50-60%40gallery_common%401.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/butterfly_pink/pled_butterfly_pink_50-60%40gallery_common%402.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/butterfly_pink/pled_butterfly_pink_50-60%40gallery_common%403.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/butterfly_pink/pled_butterfly_pink_50-60%40gallery_common%405.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/butterfly_pink/pled_butterfly_pink_50-60%40gallery_common%406.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/butterfly_pink/pled_butterfly_pink_50-60%40gallery_common%407.jpg"
-    ],
-    "sizes": [
-      { "label": "127 × 152cm", "price": 299, "old_price": 399,"old_price": 399, "visible": true },
-      { "label": "152 × 203cm", "price": 399, "old_price": 499,"old_price": 499, "visible": true }
-    ],
-    "seo": { 
-        "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-        "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка."
-    }
-  },
-  {
-    "id": 5,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Patură luminescentă - butterfly_purple",
-    "nameRU": "Плед светящийся в темноте - butterfly_purple",
-    "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-    "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-    "basePrice": 299,
-    "tag": "sale",
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/butterfly_purple/pled_butterfly_purple_50-60%40gallery_common%401.jpg",
-"https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/butterfly_purple/pled_butterfly_purple_50-60%40gallery_common%402.jpg", 
-"https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/butterfly_purple/pled_butterfly_purple_50-60%40gallery_common%403.jpg",      
-"https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/butterfly_purple/pled_butterfly_purple_50-60%40gallery_common%406.jpg",
-"https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/butterfly_purple/pled_butterfly_purple_50-60%40gallery_common%407.jpg" 
-  ],
-    "sizes": [
-      { "label": "127 × 152cm", "price": 299, "old_price": 399,"old_price": 399, "visible": true },
-      { "label": "152 × 203cm", "price": 399, "old_price": 499,"old_price": 499, "visible": true }
-    ],
-    "seo": { 
-        "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-        "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка."
-    }
-  },
-  {
-    "id": 6,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Patură luminescentă - construct_road2",
-    "nameRU": "Плед светящийся в темноте - construct_road2",
-    "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-    "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-    "basePrice": 299,
-    "tag": "sale",
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/construct_road2/pled_construct_road2_50-60%40gallery_common%401.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/construct_road2/pled_construct_road2_50-60%40gallery_common%402.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/construct_road2/pled_construct_road2_50-60%40gallery_common%403.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/construct_road2/pled_construct_road2_50-60%40gallery_common%404.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/construct_road2/pled_construct_road2_50-60%40gallery_common%405.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/construct_road2/pled_construct_road2_50-60%40gallery_common%406.jpg"
-        ],
-    "sizes": [
-      { "label": "127 × 152cm", "price": 299, "old_price": 399,"old_price": 399, "visible": true },
-      { "label": "152 × 203cm", "price": 399, "old_price": 499,"old_price": 499, "visible": false }
-    ],
-    "seo": { 
-        "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-        "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка."
-    }
-  },
-  {
-    "id": 7,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Patură luminescentă - icecream",
-    "nameRU": "Плед светящийся в темноте - icecream",
-    "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-    "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-    "basePrice": 299,
-    "tag": "sale",
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/icecream/pled_icecream_50-60%40gallery_common%401.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/icecream/pled_icecream_50-60%40gallery_common%402.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/icecream/pled_icecream_50-60%40gallery_common%403.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/icecream/pled_icecream_50-60%40gallery_common%404.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/icecream/pled_icecream_50-60%40gallery_common%405.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/icecream/pled_icecream_50-60%40gallery_common%406.jpg"
-    ],
-    "sizes": [
-      { "label": "127 × 152cm", "price": 299, "old_price": 399,"old_price": 399,"visible": true },
-      { "label": "152 × 203cm", "price": 399, "old_price": 499,"visible": false }
-    ],
-    "seo": { 
-        "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-        "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка."
-    }
-  },
-  {
-    "id": 8,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Patură luminescentă - dino_family",
-    "nameRU": "Плед светящийся в темноте - dino_family",
-    "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-    "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-    "basePrice": 299,
-    "tag": "sale",
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_family/pled_dino_family_50-60%40gallery_common%401.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_family/pled_dino_family_50-60%40gallery_common%402.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_family/pled_dino_family_50-60%40gallery_common%403.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_family/pled_dino_family_50-60%40gallery_common%404.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_family/pled_dino_family_50-60%40gallery_common%405.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_family/pled_dino_family_50-60%40gallery_common%406.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_family/pled_dino_family_50-60%40gallery_common%407.jpg"
-        ],
-    "sizes": [
-      { "label": "127 × 152cm", "price": 299, "old_price": 399,"old_price": 399,"visible": true },
-      { "label": "152 × 203cm", "price": 399, "old_price": 499,"visible": true }
-    ],
-    "seo": { 
-        "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-        "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка."
-    }
-  },
-  {
-    "id": 9,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Patură luminescentă - dino_letter",
-    "nameRU": "Плед светящийся в темноте - dino_letter",
-    "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-    "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-    "basePrice": 299,
-    "tag": "sale",
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_letter/pled_dino_letter_50-60%40gallery_common%401.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_letter/pled_dino_letter_50-60%40gallery_common%402.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_letter/pled_dino_letter_50-60%40gallery_common%403.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_letter/pled_dino_letter_50-60%40gallery_common%404.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_letter/pled_dino_letter_50-60%40gallery_common%405.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_letter/pled_dino_letter_50-60%40gallery_common%406.jpg"
-    ],
-    "sizes": [
-      { "label": "127 × 152cm", "price": 299, "old_price": 399,"old_price": 399,"visible": true },
-      { "label": "152 × 203cm", "price": 399, "old_price": 499,"visible": false }
-    ],
-    "seo": { 
-        "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-        "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка."
-    }
-  },
-  {
-    "id": 10,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Patură luminescentă - dino_roar",
-    "nameRU": "Плед светящийся в темноте - dino_roar",
-    "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-    "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-    "basePrice": 299,
-    "tag": "sale",
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_roar/pled_dino_roar_50-60%40gallery_common%401.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_roar/pled_dino_roar_50-60%40gallery_common%402.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_roar/pled_dino_roar_50-60%40gallery_common%403.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_roar/pled_dino_roar_50-60%40gallery_common%404.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_roar/pled_dino_roar_50-60%40gallery_common%405.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_roar/pled_dino_roar_50-60%40gallery_common%406.jpg"
-    ],
-    "sizes": [
-      { "label": "127 × 152cm", "price": 299, "old_price": 399,"old_price": 399,"visible": true },
-      { "label": "152 × 203cm", "price": 399, "old_price": 499,"visible": false }
-    ],
-    "seo": { 
-        "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-        "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка."
-    }
-  },
-  {
-    "id": 11,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Patură luminescentă - dino_skeleton",
-    "nameRU": "Плед светящийся в темноте - dino_skeleton",
-    "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-    "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-    "basePrice": 299,
-    "tag": "sale",
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_skeleton/pled_dino_skeleton_50-60%40gallery_common%401.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_skeleton/pled_dino_skeleton_50-60%40gallery_common%402.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_skeleton/pled_dino_skeleton_50-60%40gallery_common%403.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_skeleton/pled_dino_skeleton_50-60%40gallery_common%404.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_skeleton/pled_dino_skeleton_50-60%40gallery_common%405.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_skeleton/pled_dino_skeleton_50-60%40gallery_common%406.jpg",
-      "hhttps://ihegootehofxyltq.public.blob.vercel-storage.com/photos/dino_skeleton/pled_dino_skeleton_50-60%40gallery_common%407.jpg"
-    ],
-    "sizes": [
-      { "label": "127 × 152cm", "price": 299, "old_price": 399,"old_price": 399,"visible": true },
-      { "label": "152 × 203cm", "price": 399, "old_price": 499,"visible": true }
-    ],
-    "seo": { 
-        "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-        "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка."
-    }
-  },
-  {
-    "id": 12,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Patură luminescentă - joystick",
-    "nameRU": "Плед светящийся в темноте - joystick",
-    "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-    "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-    "basePrice": 299,
-    "tag": "sale",
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/joystick/pled_joystick_50-60%40gallery_common%401.jpg",
-      "hhttps://ihegootehofxyltq.public.blob.vercel-storage.com/photos/joystick/pled_joystick_50-60%40gallery_common%402.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/joystick/pled_joystick_50-60%40gallery_common%403.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/joystick/pled_joystick_50-60%40gallery_common%404.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/joystick/pled_joystick_50-60%40gallery_common%405.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/joystick/pled_joystick_50-60%40gallery_common%406.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/joystick/pled_joystick_50-60%40gallery_common%407.jpg"
-    ],
-    "sizes": [
-      { "label": "127 × 152cm", "price": 299, "old_price": 399,"old_price": 399,"visible": true },
-      { "label": "152 × 203cm", "price": 399, "old_price": 499,"visible": false }
-    ],
-    "seo": { 
-        "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-        "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка."
-    }
-  },
-  {
-    "id": 13,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Patură luminescentă - ocean2",
-    "nameRU": "Плед светящийся в темноте - ocean2",
-    "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-    "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-    "basePrice": 299,
-    "tag": "sale",
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/ocean2/pled_ocean2_50-60%40gallery_common%401.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/ocean2/pled_ocean2_50-60%40gallery_common%402.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/ocean2/pled_ocean2_50-60%40gallery_common%403.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/ocean2/pled_ocean2_50-60%40gallery_common%404.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/ocean2/pled_ocean2_50-60%40gallery_common%405.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/ocean2/pled_ocean2_50-60%40gallery_common%406.jpg"
-    ],
-    "sizes": [
-      { "label": "127 × 152cm", "price": 299, "old_price": 399,"old_price": 399,"visible": true },
-      { "label": "152 × 203cm", "price": 399, "old_price": 499,"visible": true }
-    ],
-    "seo": { 
-        "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-        "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка."
-    }
-  },
-  {
-    "id": 14,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Patură luminescentă - stargrey",
-    "nameRU": "Плед светящийся в темноте - stargrey",
-    "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-    "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-    "basePrice": 299,
-    "tag": "sale",
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/stargrey/pled_stargrey_50-60%40gallery_common%401.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/stargrey/pled_stargrey_50-60%40gallery_common%402.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/stargrey/pled_stargrey_50-60%40gallery_common%403.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/stargrey/pled_stargrey_50-60%40gallery_common%404.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/stargrey/pled_stargrey_50-60%40gallery_common%405.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/stargrey/pled_stargrey_50-60%40gallery_common%406.jpg"
-    ],
-    "sizes": [
-      { "label": "127 × 152cm", "price": 299, "old_price": 399,"old_price": 399,"visible": true },
-      { "label": "152 × 203cm", "price": 399, "old_price": 499,"visible": false }
-    ],
-    "seo": { 
-        "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-        "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка."
-    }
-  },
-  {
-    "id": 15,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Patură luminescentă - tractor",
-    "nameRU": "Плед светящийся в темноте - tractor",
-    "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-    "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-    "basePrice": 299,
-    "tag": "sale",
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/tractor/pled_tractor_50-60%40gallery_common%401.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/tractor/pled_tractor_50-60%40gallery_common%402.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/tractor/pled_tractor_50-60%40gallery_common%403.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/tractor/pled_tractor_50-60%40gallery_common%404.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/tractor/pled_tractor_50-60%40gallery_common%405.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/tractor/pled_tractor_50-60%40gallery_common%406.jpg"
-    ],
-    "sizes": [
-      { "label": "127 × 152cm", "price": 299, "old_price": 399,"old_price": 399,"visible": true },
-      { "label": "152 × 203cm", "price": 399, "old_price": 499,"visible": false }
-    ],
-    "seo": { 
-        "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-        "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка."
-    }
-  },
-  {
-    "id": 16,
-    "visible": false,
-    "priority": 5,
-    "nameRO": "Patură luminescentă - unicorn",
-    "nameRU": "Плед светящийся в темноте - unicorn",
-    "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-    "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-    "basePrice": 299,
-    "tag": "sale",
-    "images": [
-      "https://glowy.md/content/images/43/127x152sm-15384052559586_+cfc4bd339b.jpg",
-      "https://glowy.md/content/images/43/127x152sm-31471887000174_+096a201177.jpg",
-      "https://glowy.md/content/images/43/127x152sm-17718985512232_+cb823e0a0e.jpg",
-      "https://glowy.md/content/images/43/127x152sm-55478093589310_+3b05e1ace5.jpg",
-      "https://glowy.md/content/images/43/127x152sm-39291372092652_+bc01f9f7dd.jpg",
-      "https://glowy.md/content/images/43/127x152sm-79334039998756_+cb46d6cfa0.jpg",
-      "https://glowy.md/content/images/43/pled_unicorn_127x152cm542-94473511209857_+01d2f8dde2.jpg"
-    ],
-    "sizes": [
-      { "label": "127 × 152cm", "price": 299, "old_price": 399,"visible": true },
-      { "label": "152 × 203cm", "price": 399, "old_price": 499,"visible": true }
-    ],
-    "seo": { 
-        "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-        "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка."
-    }
-  },
-  {
-    "id": 17,
-    "visible": false,
-    "priority": 5,
-    "nameRO": "Patură luminescentă - ocean",
-    "nameRU": "Плед светящийся в темноте - ocean",
-    "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-    "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-    "basePrice": 299,
-    "tag": "sale",
-    "images": [
-      "https://glowy.md/content/images/49/pled-svetjashiysja-v-temnote--ocean-127x152sm-22486978860959_+177e8efd79.jpg",
-      "https://glowy.md/content/images/49/pled-svetjashiysja-v-temnote--ocean-127x152sm-56047776027698_+739fe464ea.jpg",
-      "https://glowy.md/content/images/49/pled-svetjashiysja-v-temnote--ocean-127x152sm-43563260658173_+ac38f42adc.jpg",
-      "https://glowy.md/content/images/49/pled-svetjashiysja-v-temnote--ocean-127x152sm-52329306205946_+85f42f4136.jpg",
-      "https://glowy.md/content/images/49/pled-svetjashiysja-v-temnote--ocean-127x152sm-45439945442782_+e7c8b95a68.jpg",
-      "https://glowy.md/content/images/49/pled-svetjashiysja-v-temnote--ocean-127x152sm-19645388332676_+e7ebc72803.jpg",
-      "https://glowy.md/content/images/49/patura-ce-lumineaza-in-intuneric-ocean-127x152cm-78044488766562_+a65073666b.jpg"
-    ],
-    "sizes": [
-      { "label": "127 × 152cm", "price": 299, "old_price": 399,"visible": true },
-      { "label": "152 × 203cm", "price": 399, "old_price": 499,"visible": true }
-    ],
-    "seo": { 
-        "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-        "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка."
-    }
-  },
-  {
-    "id": 18,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Patură luminescentă - gamer",
-    "nameRU": "Плед светящийся в темноте - gamer",
-    "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-    "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-    "basePrice": 299,
-    "tag": "sale",
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/new_gamer/pled_new_gamer_50-60%40gallery_common%401.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/new_gamer/pled_new_gamer_50-60%40gallery_common%402.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/new_gamer/pled_new_gamer_50-60%40gallery_common%403.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/new_gamer/pled_new_gamer_50-60%40gallery_common%404.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/new_gamer/pled_new_gamer_50-60%40gallery_common%405.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/new_gamer/pled_new_gamer_50-60%40gallery_common%406.jpg"
-    ],
-    "sizes": [
-      { "label": "127 × 152cm", "price": 299, "old_price": 399,"visible": true },
-      { "label": "152 × 203cm", "price": 399, "old_price": 499,"visible": false }
-    ],
-    "seo": { 
-        "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-        "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка."
-    }
-  },
-  {
-    "id": 19,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Patură luminescentă - unicorn2",
-    "nameRU": "Плед светящийся в темноте - unicorn2",
-    "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-    "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-    "basePrice": 299,
-    "tag": "sale",
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/unicorn_2/pled_unicorn2_50-60%40gallery_common%401.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/unicorn_2/pled_unicorn2_50-60%40gallery_common%402.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/unicorn_2/pled_unicorn2_50-60%40gallery_common%403.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/unicorn_2/pled_unicorn2_50-60%40gallery_common%404.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/unicorn_2/pled_unicorn2_50-60%40gallery_common%405.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/unicorn_2/pled_unicorn2_50-60%40gallery_common%406.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/unicorn_2/pled_unicorn2_50-60%40gallery_common%407.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/unicorn_2/pled_unicorn2_50-60%40gallery_common%408.jpg"
-    ],
-    "sizes": [
-      { "label": "127 × 152cm", "price": 299, "old_price": 399,"visible": true },
-      { "label": "152 × 203cm", "price": 399, "old_price": 499,"visible": false }
-    ],
-    "seo": { 
-        "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-        "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка."
-    }
-  },
-  {
-    "id": 20,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Patură luminescentă - love",
-    "nameRU": "Плед светящийся в темноте - love",
-    "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-    "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-    "basePrice": 299,
-    "tag": "sale",
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/love/81B4krs0eQL._AC_SL1500_.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/love/71wPDA4%2B7BL._AC_SL1500_.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/love/81k3LtkpY1L._AC_SL1500_.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/love/81zyEVZ7WCL._AC_SL1500_.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/love/91BwZHNrubL._AC_SL1500_.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/love/91FqzcJB1nL._AC_SL1500_.jpg"
-    ],
-    "sizes": [
-      { "label": "127 × 152cm", "price": 299, "old_price": 399,"visible": true },
-      { "label": "152 × 203cm", "price": 399, "old_price": 499,"visible": false }
-    ],
-    "seo": { 
-        "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-        "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка."
-    }
-  },
-  {
-    "id": 21,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Patură luminescentă - cosmo",
-    "nameRU": "Плед светящийся в темноте - cosmo",
-    "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-    "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-    "basePrice": 299,
-    "tag": "sale",
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/cosmo/5293988066877968252.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/cosmo/5293988066877968261.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/cosmo/71RdN1mAU1L._AC_SL1500_.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/cosmo/816qPVMWk4L._AC_SL1500_.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/cosmo/81P%2BysXD2eL._AC_SL1500_.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/cosmo/81q-EjpgtdL._AC_SL1500_.jpg",
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/cosmo/81sxQAjxhjL._AC_SL1500_.jpg"
-    ],
-    "sizes": [
-      { "label": "127 × 152cm", "price": 299, "old_price": 399,"visible": true },
-      { "label": "152 × 203cm", "price": 399, "old_price": 499,"visible": false }
-    ],
-    "seo": { 
-        "keywordsRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "keywordsRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка.",
-        "descRO": "pătură pentru copii care luminează în întuneric, pătură moale pentru copii, pătură luminoasă, confort pentru copii.",
-        "descRU": "детский плед светящийся в темноте, мягкий плед для детей, плед с подсветкой, уют для ребенка."
-    }
-  },
-  {
-    "id": 22,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Rucsac tip săculeț “Glowy” cu nori.",
-    "nameRU": "Рюкзак-мешок “Glowy” с облачками.",
-    "descRO": "Rucsacul tip săculeț “Glowy” cu nori.",
-    "descRU": "Рюкзак-мешок “Glowy” с облачками.",
-    "basePrice": 50,
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/saci/sac-rucsac-cloud-82233707197069_%2B1277a39545.jpg"
-    ],
-    "sizes": [{ "label": "Standard", "price": 50, "visible": true }],
-    "seo": { 
-        "keywordsRO": "rucsac tip saculeț, rucsac Glowy, rucsac cu nori, rucsac pentru copii, rucsac impermeabil, rucsac poliester, rucsac pentru băieți, rucsac cu șnur, rucsac confortabil, cadou pentru băiat, rucsac de școală",
-        "keywordsRU": "рюкзак мешок, рюкзак Glowy, рюкзак с облачками, детский рюкзак, рюкзак для школы, водонепроницаемый рюкзак, рюкзак полиэстер, рюкзак для мальчика, рюкзак на шнурках, удобный рюкзак, подарок для мальчика",
-        "descRO": "Rucsacul tip săculeț “Glowy” cu nori.",
-        "descRU": "Рюкзак-мешок “Glowy” с облачками."
-    }
-  },
-  {
-    "id": 23,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Rucsac tip săculeț “Glowy” cu dinozaur — colorat, comod și distractiv!",
-    "nameRU": "Рюкзак-мешок “Glowy” с динозавром — ярко, удобно и весело!",
-    "descRO": "Rucsac tip săculeț “Glowy” cu dinozaur — colorat, comod și distractiv!",
-    "descRU": "Рюкзак-мешок “Glowy” с динозавром — ярко, удобно и весело!",
-    "basePrice": 50,
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/saci/70605166027596_%2Bf643d7bda5.jpg"
-    ],
-    "sizes": [{ "label": "Standard", "price": 50, "visible": true }],
-    "seo": { 
-        "keywordsRO": "rucsac tip saculeț, rucsac cu dinozaur, rucsac pentru copii, rucsac Glowy, rucsac impermeabil, rucsac poliester, rucsac cu șnur, rucsac de școală, rucsac pentru băieți, cadou pentru copii, rucsac comod",
-        "keywordsRU": "рюкзак мешок, рюкзак с динозавром, детский рюкзак, рюкзак Glowy, рюкзак для школы, водонепроницаемый рюкзак, рюкзак полиэстер, рюкзак на шнурках, рюкзак для мальчика, подарок для ребенка, удобный рюкзак",
-        "descRO": "Rucsac tip săculeț “Glowy” cu dinozaur — colorat, comod și distractiv!",
-        "descRU": "Рюкзак-мешок “Glowy” с динозавром — ярко, удобно и весело!"
-    }
-  },
-  {
-    "id": 24,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Rucsac tip săculeț “Glowy” cu elicopter și personaje — stil și confort",
-    "nameRU": "Рюкзак-мешок “Glowy” с вертолетом и персонажами — стиль и комфорт",
-    "descRO": "Rucsacul tip săculeț “Glowy” cu elicopter și personaje — stil și confort.",
-    "descRU": "Рюкзак-мешок “Glowy” с вертолетом и персонажами — стиль и комфорт.",
-    "basePrice": 50,
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/saci/13533234244294_%2B22827bdf35.jpg"
-    ],
-    "sizes": [{ "label": "Standard", "price": 50, "visible": true }],
-    "seo": { 
-        "keywordsRO": "rucsac tip saculeț, rucsac , rucsac pentru fetițe, rucsac Glowy, rucsac impermeabil, rucsac poliester, rucsac cu șnur, rucsac comod, cadou pentru fetiță, rucsac colorat, rucsac de vară",
-        "keywordsRU": "рюкзак мешок, рюкзак, детский рюкзак, рюкзак Glowy, рюкзак для девочки, водонепроницаемый рюкзак, рюкзак полиэстер, рюкзак на шнурках, удобный рюкзак, подарок для девочки, яркий рюкзак",
-        "descRO": "Rucsac tip săculeț “Glowy” cu înghețată — dulceață și confort la fiecare pas!",
-        "descRU": "Рюкзак-мешок “Glowy” с мороженым — сладость и удобство в каждом шаге!"
-    }
-  },
-  {
-    "id": 25,
-    "visible": true,
-    "priority": 5,
-    "nameRO": "Rucsac tip săculeț “Glowy” cu unicorn — magie și confort în fiecare zi!",
-    "nameRU": "Рюкзак-мешок “Glowy” с единорогом — магия и комфорт каждый день!",
-    "descRO": "Rucsac tip săculeț “Glowy” cu unicorn — magie și confort în fiecare zi!",
-    "descRU": "Рюкзак-мешок “Glowy” с единорогом — магия и комфорт каждый день!",
-    "basePrice": 50,
-    "images": [
-      "https://ihegootehofxyltq.public.blob.vercel-storage.com/photos/saci/copy_sac-rucsac-dino-90496979362866_%2B0b8e5ea879.jpg"
-    ],
-    "sizes": [{ "label": "Standard", "price": 50, "visible": true }],
-    "seo": { 
-        "keywordsRO": "rucsac tip saculeț, rucsac cu unicorn, rucsac pentru fetițe, rucsac Glowy, rucsac impermeabil, rucsac poliester, rucsac cu șnur, rucsac magic, cadou pentru fetiță, rucsac comod, rucsac de școală",
-        "keywordsRU": "рюкзак мешок, рюкзак с единорогом, детский рюкзак, рюкзак Glowy, рюкзак для девочки, водонепроницаемый рюкзак, рюкзак полиэстер, рюкзак на шнурках, волшебный рюкзак, подарок для девочки, удобный рюкзак",
-        "descRO": "Rucsac tip săculeț “Glowy” cu unicorn — magie și confort în fiecare zi!",
-        "descRU": "Рюкзак-мешок “Glowy” с единорогом — магия и комфорт каждый день!"
-    }
-  }
-];
-
         let currentLang = 'ro';
+        let tempSelectedProduct = null;
         let currentProduct = null;
-        let selectedSize = '';
         let currentPrice = 0;
+        let selectedSizeLabel = "";
         let currentModalImageIndex = 0;
 
-        // NEW: URL Parameter Logic
-        function setLanguage(lang) {
-    const url = new URL(window.location);
-    url.searchParams.set('lang', lang);
-    window.history.pushState({}, '', url);
-    changeLang(lang);
-    
-    // --- ДОБАВИТЬ ЭТО ДЛЯ SEO ---
-    const canonical = document.getElementById('canonicalLink');
-    if (canonical) {
-        // Если язык ro - каноникал на корень или на ?lang=ro
-        // Если язык ru - каноникал ОБЯЗАТЕЛЬНО на ?lang=ru
-        if (lang === 'ro') {
-             canonical.href = 'https://glowy.md/';
-        } else {
-             canonical.href = 'https://glowy.md/?lang=' + lang;
-        }
-    }
-    // -----------------------------
-}
-
-        function getLanguageFromUrl() {
-            const params = new URLSearchParams(window.location.search);
-            return params.get('lang') || 'ro';
-        }
-
-        function init() {
-            const lang = getLanguageFromUrl();
-            changeLang(lang);
-        }
-
-        function updateSeo(lang) {
-            if(products.length > 0) {
-                const data = products[0].seo; // Default SEO logic
-                document.title = "Glowy.md - Pături luminescente magice";
-            }
-        }
-
-function renderProducts() {
-            const bestGrid = document.getElementById('products-grid');
-            const fullGrid = document.getElementById('full-catalog-grid');
-            const catalogBtn = document.getElementById('catalogBtnContainer');
-
-            bestGrid.innerHTML = '';
-            fullGrid.innerHTML = '';
-
-            // Словарь для тэгов (можно расширять в будущем)
-            const tagTranslations = {
-                ro: { sale: "Preț special in Ianuarie", new: "Nou", hit: "Top vânzări" },
-                ru: { sale: "Специальная цена в Январе", new: "Новинка", hit: "Хит продаж" }
-            };
-
-            const activeProducts = products
-                .filter(p => p.visible !== false)
-                .sort((a, b) => (b.priority || 5) - (a.priority || 5));
-
-            activeProducts.forEach((p, index) => {
-                const name = currentLang === 'ro' ? p.nameRO : p.nameRU;
-                const desc = currentLang === 'ro' ? p.descRO : p.descRU;
-                const btnText = currentLang === 'ro' ? "Detalii" : "Подробнее";
-                const mainImg = p.images[0];
-                
-                // Находим первый видимый размер, чтобы отобразить его цену на карточке
-                const firstSize = p.sizes.find(s => s.visible !== false);
-                // Если размеров нет (баг данных), берем basePrice
-                const displayPrice = firstSize ? firstSize.price : p.basePrice; 
-                const displayOldPrice = firstSize ? firstSize.old_price : null;
-
-                // Логика размеров для отображения "127x152 / 150x200"
-                const sizesStr = p.sizes
-                    .filter(s => s.visible !== false)
-                    .map(s => s.label)
-                    .join(' / ');
-
-                // --- НОВАЯ ЛОГИКА ТЭГА (зависит только от параметра tag) ---
-                let badgeHTML = '';
-                if (p.tag && tagTranslations[currentLang][p.tag]) {
-                    const tagName = tagTranslations[currentLang][p.tag];
-                    // Можно менять цвет в зависимости от тэга, пока красный для всех
-                    let bgClass = 'bg-red-500'; 
-                    if(p.tag === 'new') bgClass = 'bg-green-500'; // Пример для новинки
-
-                    badgeHTML = `<div class="absolute top-0 left-0 ${bgClass} text-white text-xs font-bold px-3 py-1 rounded-br-lg shadow-md z-10 uppercase tracking-wider animate-pulse">${tagName}</div>`;
-                }
-
-                // --- НОВАЯ ЛОГИКА ЦЕНЫ НА КАРТОЧКЕ (зависит от первого размера) ---
-                const isSalePrice = displayOldPrice && displayOldPrice > displayPrice;
-                let priceHTML = '';
-                if (isSalePrice) {
-                    priceHTML = `
-                        <div class="flex flex-col leading-none">
-                            <span class="text-xs text-gray-400 line-through mb-1">${displayOldPrice} MDL</span>
-                            <span class="text-xl font-bold text-red-600">${displayPrice} MDL</span>
-                        </div>
-                    `;
-                } else {
-                    priceHTML = `<span class="text-xl font-bold text-glowy-dark">${displayPrice} MDL</span>`;
-                }
-                // ---------------------
-
-                const cardImgId = `card-img-${p.id}`;
-
-                const cardHTML = `
-                    <div class="bg-white rounded-2xl shadow-lg border border-gray-100 overflow-hidden group flex flex-col h-full relative hover:-translate-y-1 transition duration-300">
-                        
-                        <div class="relative w-full aspect-square bg-gray-100 overflow-hidden" onclick="openProduct(${p.id})">
-                            
-                            ${badgeHTML} <img id="${cardImgId}" src="${mainImg}" 
-                                 alt="${name}" width="400" height="400" loading="lazy"
-                                 onerror="this.src='https://ihegootehofxyltq.public.blob.vercel-storage.com/glowy_logo.png?text=No+Image'" 
-                                 class="w-full h-full object-cover transition duration-500 cursor-pointer"
-                                 data-current-index="0">
-                            
-                            ${p.images.length > 1 ? `
-                            <div class="slider-arrow slider-prev" onclick="changeCardImage(event, ${p.id}, -1)">
-                                <i class="fa-solid fa-chevron-left"></i>
-                            </div>
-                            <div class="slider-arrow slider-next" onclick="changeCardImage(event, ${p.id}, 1)">
-                                <i class="fa-solid fa-chevron-right"></i>
-                            </div>
-                            ` : ''}
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow" onclick="openProduct(${p.id})">
-                            <h3 class="text-xl font-bold mb-2 text-gray-800 leading-tight cursor-pointer">${name}</h3>
-                            <p class="text-xs text-glowy font-bold uppercase mb-3 flex items-center gap-1">
-                                <i class="fa-solid fa-ruler-combined"></i> ${sizesStr}
-                            </p>
-                            <div class="text-gray-500 text-sm mb-4 line-clamp-2">${desc}</div>
-                            
-                            <div class="mt-auto flex justify-between items-center border-t pt-4">
-                                ${priceHTML} <button class="bg-glowy hover:bg-glowy-dark text-white px-4 py-2 rounded-lg text-sm transition font-bold">${btnText}</button>
-                            </div>
-                        </div>
-                    </div>
-                `;
-
-                if (index < 6) bestGrid.insertAdjacentHTML('beforeend', cardHTML);
-                else fullGrid.insertAdjacentHTML('beforeend', cardHTML);
-            });
-
-            if (catalogBtn) catalogBtn.style.display = activeProducts.length <= 6 ? 'none' : 'block';
-        }
-        // --- CATALOG SLIDER LOGIC ---
-        function changeCardImage(event, productId, direction) {
-            event.stopPropagation(); // Stop click from opening modal
-            const p = products.find(x => x.id === productId);
-            const imgEl = document.getElementById(`card-img-${productId}`);
-            let currentIndex = parseInt(imgEl.getAttribute('data-current-index'));
-            
-            currentIndex += direction;
-            if (currentIndex < 0) currentIndex = p.images.length - 1;
-            if (currentIndex >= p.images.length) currentIndex = 0;
-            
-            imgEl.src = p.images[currentIndex];
-            imgEl.setAttribute('data-current-index', currentIndex);
-        }
-
-        function changeLang(lang) {
-            currentLang = lang;
-            document.getElementById('btn-ro').className = lang === 'ro' ? "font-bold text-glowy" : "font-bold text-gray-400 hover:text-glowy";
-            document.getElementById('btn-ru').className = lang === 'ru' ? "font-bold text-glowy" : "font-bold text-gray-400 hover:text-glowy";
-            
-            const uiTexts = {
-                ro: { nav_about: "Despre noi", nav_catalog: "Catalog", nav_delivery: "Livrare", nav_contacts: "Contacte", hero_title: "Magia care încălzește", hero_subtitle: "Pături care luminează în întuneric și oferă o poveste.", hero_btn: "Spre catalog", catalog_title: "Cele mai vândute 🌟", btn_full_catalog: "Vezi tot catalogul", banner1_title: "Set Avantajos!", banner1_desc: "Pătură + Rucsac (+28 Lei)", btn_order: "Contactează managerul", banner2_title: "Gata de dăruit", banner2_desc: "Ambalaj cu panglică de satin (+50 Lei)", btn_want: "Vreau ambalaj", about_title: "Bine ați venit la Glowy.md!", about_text: `<p class="mb-4">Bine ați venit în lumea <b>Glowy.md</b> – locul unde visele copiilor prind culoare la stingerea luminii! ✨</p><p class="mb-4">Suntem specializați în comercializarea <b>păturilor luminescente</b> unice, care transformă ora de culcare într-o adevărată magie. Produsele noastre nu sunt doar textile, ci o sursă de emoții pozitive, siguranță și confort pentru cei mici.</p><p>Fiecare păturică este realizată din materiale hipoalergenice, moi și plăcute la atingere, ideale pentru pielea sensibilă a copiilor. Alegeți Glowy pentru a oferi un cadou memorabil care va deveni rapid preferatul copilului tău!</p>`, delivery_title: "Livrare prin Curier", delivery_text: `<p class="mb-4">Livrarea se efectuează prin serviciu de curierat rapid în toată Moldova. 🚚</p><p>Termenii de livrare și costul exact depind de tarifele companiei de curierat și de localitatea dvs. Toate detaliile privind expedierea vor fi <b>stabilite individual cu managerul</b> nostru în momentul confirmării cererii.</p>`, payment_title: "Metode de Plată", payment_text: `<p class="mb-4">Oferim flexibilitate maximă pentru confortul dvs:</p><ul class="list-disc pl-5 space-y-2"><li><b>Numerar sau Card:</b> Puteți achita direct curierului la primirea coletului.</li><li><b>MIA:</b> Acceptăm plăți rapide și sigure prin sistemul MIA (detalii la manager).</li></ul>`, btn_contact_manager: "Contactează managerul", label_size: "Mărime:", btn_send_req: "Contactează managerul", form_title: "Solicită detalii", form_name: "Nume", form_phone: "Telefon", form_address: "Adresă / Comentariu", btn_send: "Trimite cererea",badge_sale: "Preț special" },
-                ru: { nav_about: "О нас", nav_catalog: "Каталог", nav_delivery: "Доставка", nav_contacts: "Контакты", hero_title: "Магия, которая согревает", hero_subtitle: "Пледы, которые светятся в темноте.", hero_btn: "Перейти к каталогу", catalog_title: "Хиты продаж 🌟", btn_full_catalog: "Показать весь каталог", banner1_title: "Выгодно вместе!", banner1_desc: "Плед + Рюкзак всего за (+28 Lei) ", btn_order: "Связаться с менеджером", banner2_title: "Готовый подарок", banner2_desc: "Упаковка с атласной лентой (+50 Lei)", btn_want: "Хочу упаковку", about_title: "Добро пожаловать в Glowy.md!", about_text: `<p class="mb-4">Добро пожаловать в мир <b>Glowy.md</b> – место, где детские сны обретают краски, когда гаснет свет! ✨</p><p class="mb-4">Мы специализируемся на продаже уникальных <b>светящихся пледов</b>, которые превращают отход ко сну в настоящую магию. Наши товары — это не просто текстиль, а источник положительных эмоций, чувства защищенности и уюта для малышей.</p><p>Каждый плед создан из гипоаллергенных, мягких и приятных на ощупь материалов, идеально подходящих для нежной детской кожи. Выбирайте Glowy, чтобы подарить незабываемый подарок, который станет любимой вещью вашего ребенка!</p>`, delivery_title: "Доставка курьером", delivery_text: `<p class="mb-4">Доставка осуществляется курьерской службой по всей Молдове. 🚚</p><p>Сроки и точная стоимость зависят от тарифов курьерской компании и вашего населенного пункта. Все детали доставки и итоговая сумма будут <b>согласованы с менеджером</b> индивидуально при подтверждении запроса.</p>`, payment_title: "Способы оплаты", payment_text: `<p class="mb-4">Мы предлагаем удобные способы оплаты:</p><ul class="list-disc pl-5 space-y-2"><li><b>Наличные или Карта:</b> Оплата курьеру при получении заказа.</li><li><b>MIA:</b> Быстрые и безопасные платежи через систему MIA (детали у менеджера).</li></ul>`, btn_contact_manager: "Связаться с менеджером", label_size: "Размер:", btn_send_req: "Связаться с менеджером", form_title: "Запросить детали", form_name: "Имя", form_phone: "Телефон", form_address: "Адрес / Вопрос", btn_send: "Отправить запрос",badge_sale: "Специальная цена" }
-                
-            };
-
-            const t = uiTexts[lang];
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (t[key]) el.innerHTML = t[key];
-            });
-
-            // Update Label in Form specifically
-            const lbl = document.getElementById('labelProduct');
-            if(lbl) lbl.innerText = lang === 'ro' ? "Produs:" : "Товар:";
-
-            // Update button text in form
-            const btnSend = document.getElementById('submitBtn');
-            if(btnSend) btnSend.innerText = lang === 'ro' ? "Trimite cererea" : "Отправить запрос";
-
-            updateSeo(lang);
-            renderProducts();
-        }
-
-        function toggleFullCatalog() {
-            const grid = document.getElementById('full-catalog-grid');
-            const btn = document.getElementById('catalogBtn');
-            
-            if (grid.classList.contains('hidden')) {
-                grid.classList.remove('hidden');
-                btn.innerHTML = currentLang === 'ro' ? 'Ascunde catalogul' : 'Свернуть каталог';
-            } else {
-                grid.classList.add('hidden');
-                btn.innerHTML = currentLang === 'ro' ? 'Vezi tot catalogul' : 'Показать весь каталог';
-                document.getElementById('catalog').scrollIntoView();
-            }
-        }
-
-        // --- MODAL LOGIC ---
-function openProduct(id) {
-            const p = products.find(x => x.id === id);
-            currentProduct = p;
-            currentModalImageIndex = 0; // Reset index
-            
-            document.getElementById('mTitle').innerText = currentLang === 'ro' ? p.nameRO : p.nameRU;
-            document.getElementById('mDesc').innerHTML = currentLang === 'ro' ? p.descRO : p.descRU;
-            
-            updateModalImage(); // Initial render
-            
-            // Generate Thumbnails
-            const thumbContainer = document.getElementById('mThumbnails');
-            thumbContainer.innerHTML = '';
-            
-            if (p.images.length > 0) {
-                p.images.forEach((imgSrc, index) => {
-                    const thumb = document.createElement('img');
-                    thumb.src = imgSrc;
-                    thumb.alt = `Thumbnail ${index}`;
-                    thumb.className = `w-16 h-16 object-cover rounded-lg border-2 cursor-pointer transition thumb ${index === 0 ? 'active' : 'border-transparent'}`;
-                    thumb.onclick = function() {
-                        currentModalImageIndex = index;
-                        updateModalImage();
-                    };
-                    thumbContainer.appendChild(thumb);
-                });
-            }
-
-            // --- ИЗМЕНЕНИЕ: Sizes logic ---
-            const sizeCont = document.getElementById('sizeContainer');
-            sizeCont.innerHTML = '';
-            
-            // Фильтруем размеры перед созданием кнопок
-            const visibleSizes = p.sizes.filter(s => s.visible !== false);
-
-            visibleSizes.forEach((size, index) => {
-                const btn = document.createElement('button');
-                btn.innerText = size.label;
-                btn.className = `size-btn border border-gray-300 px-4 py-3 rounded-lg text-sm font-bold transition hover:border-glowy flex flex-col items-center gap-1`;
-                const priceHint = document.createElement('span');
-                priceHint.innerText = `${size.price} MDL`;
-                priceHint.className = "text-xs font-normal text-gray-500";
-                btn.appendChild(priceHint);
-                btn.onclick = () => selectSize(size, btn);
-                sizeCont.appendChild(btn);
-                
-                // Выбираем первый ДОСТУПНЫЙ размер автоматически
-                if (index === 0) selectSize(size, btn);
-            });
-
-            document.getElementById('productModal').classList.remove('hidden');
-        }
-
-        function changeModalImage(direction) {
-            currentModalImageIndex += direction;
-            if (currentModalImageIndex < 0) currentModalImageIndex = currentProduct.images.length - 1;
-            if (currentModalImageIndex >= currentProduct.images.length) currentModalImageIndex = 0;
-            updateModalImage();
-        }
-
-        function updateModalImage() {
-            const imgEl = document.getElementById('mImg');
-            imgEl.src = currentProduct.images[currentModalImageIndex];
-            imgEl.onerror = function() { this.src='https://placehold.co/500x500?text=No+Image'; };
-            
-            // Update active thumbnail style
-            const thumbs = document.querySelectorAll('#mThumbnails .thumb');
-            thumbs.forEach((t, idx) => {
-                if(idx === currentModalImageIndex) {
-                    t.classList.add('active');
-                    t.classList.remove('border-transparent');
-                } else {
-                    t.classList.remove('active');
-                    t.classList.add('border-transparent');
-                }
-            });
-        }
-
-        // --- LIGHTBOX LOGIC ---
-        function openLightbox(src) {
-            const lb = document.getElementById('lightbox');
-            const lbImg = document.getElementById('lightboxImg');
-            lbImg.src = src;
-            lb.classList.remove('hidden');
-        }
-
-function selectSize(sizeObj, btnElement) {
-    selectedSize = sizeObj.label;
-    currentPrice = sizeObj.price;
-    
-    // Снимаем активность со всех кнопок
-    document.querySelectorAll('.size-btn').forEach(b => {
-        b.classList.remove('active', 'border-glowy');
-        b.querySelector('span').classList.remove('text-white');
-        b.querySelector('span').classList.add('text-gray-500');
-    });
-    
-    // Активируем нажатую
-    if(btnElement) {
-        btnElement.classList.add('active', 'border-glowy');
-        btnElement.querySelector('span').classList.remove('text-gray-500');
-        btnElement.querySelector('span').classList.add('text-white');
-    }
-    
-    // --- ОБНОВЛЕНИЕ ЦЕНЫ В МОДАЛКЕ (НОВАЯ ЛОГИКА) ---
-    const priceContainer = document.getElementById('mPrice');
-    
-    // Проверяем скидку КОНКРЕТНОГО выбранного размера (sizeObj)
-    const isSale = sizeObj.old_price && sizeObj.old_price > sizeObj.price;
-
-    if (isSale) {
-        // Если у этого размера есть скидка
-        priceContainer.innerHTML = `
-            <span class="text-xl text-gray-400 line-through mr-2">${sizeObj.old_price} MDL</span>
-            <span class="text-red-600">${sizeObj.price}</span>
-        `;
-        priceContainer.parentElement.classList.remove('text-glowy'); 
-    } else {
-        // Обычная цена
-        priceContainer.innerHTML = `<span>${sizeObj.price}</span>`;
-        priceContainer.parentElement.classList.add('text-glowy');
-    }
-}
-
-        function orderFromProduct() {
-            const title = document.getElementById('mTitle').innerText;
-            closeModal('productModal');
-            openOrderModal(title, selectedSize, currentPrice);
-        }
-
-        function openOrderModal(subject, size = '', price = '') {
-            document.getElementById('formSubject').value = subject;
-            document.getElementById('formSize').value = size;
-            
-            document.getElementById('displayProduct').innerText = subject;
-            
-            let sizeText = size ? `Size: ${size} | Price: ${price} MDL` : '';
-            
-            document.getElementById('displaySize').innerText = sizeText;
-            document.getElementById('orderModal').classList.remove('hidden');
-        }
-
-        function closeModal(id) {
-            document.getElementById(id).classList.add('hidden');
-        }
-
-        function closeOnClick(e, id) {
-            if (e.target.id === id) closeModal(id);
-        }
-
-        // --- BACKEND ---
-        // Note: These variables must be replaced during build time!
+        // --- BACKEND CONSTANTS (USER PROVIDED) ---
+        // Note: These variables must be replaced during build time or manually!
         const TG_TOKEN = typeof TG_TOKEN_var !== 'undefined' ? TG_TOKEN_var : ''; 
         const TG_CHAT_ID = typeof TG_CHAT_ID_var !== 'undefined' ? TG_CHAT_ID_var : ''; 
         const GOOGLE_SCRIPT_URL = typeof GOOGLE_SCRIPT_URL_var !== 'undefined' ? GOOGLE_SCRIPT_URL_var : ''; 
 
-async function submitForm(e) {
-    e.preventDefault();
-    const btn = document.getElementById('submitBtn');
-    const originalText = btn.innerText;
-    btn.innerText = "Se trimite... / Отправка...";
-    btn.disabled = true;
+        // --- LANGUAGE & INIT ---
+        function setLanguage(lang) {
+            const url = new URL(window.location);
+            url.searchParams.set('lang', lang);
+            window.history.pushState({}, '', url);
+            changeLang(lang);
+        }
 
-    // Сбор данных из формы
-    const name = document.getElementById('inpName').value;
-    const phone = document.getElementById('inpPhone').value;
-    const email = document.getElementById('inpEmail').value;
-    const address = document.getElementById('inpAddress').value;
-    const topic = document.getElementById('formSubject').value;
-    const size = document.getElementById('formSize').value;
+        function changeLang(lang) {
+            currentLang = lang;
+            document.getElementById('btn-ro').className = lang === 'ro' ? "font-bold text-glowy underline" : "font-bold text-gray-400 hover:text-glowy";
+            document.getElementById('btn-ru').className = lang === 'ru' ? "font-bold text-glowy underline" : "font-bold text-gray-400 hover:text-glowy";
+            
+            const t = uiTexts[lang];
+            if(t) {
+                document.querySelectorAll('[data-i18n]').forEach(el => {
+                    const key = el.getAttribute('data-i18n');
+                    if (t[key]) el.innerHTML = t[key];
+                });
+            }
+            renderProducts();
+        }
 
-    const fullItemName = size ? `${topic} [${size}]` : topic;
+        function renderProducts() {
+            const bestGrid = document.getElementById('products-grid');
+            const fullGrid = document.getElementById('full-catalog-grid');
+            bestGrid.innerHTML = ''; fullGrid.innerHTML = '';
 
-    // 1. Подготовка текста для Telegram
-    const tgMsg = `🚀 *NEW ORDER GLOWY*\n\n📦 *Item:* ${fullItemName}\n💰 *Price:* ${currentPrice} MDL\n👤 *Name:* ${name}\n📞 *Phone:* ${phone}\n📍 *Addr:* ${address}\n📧 *Email:* ${email}`;
+            if (typeof products === 'undefined') return;
 
-    // 2. Подготовка объекта для Google Sheets
-    const sheetData = { name, phone, email, address, topic: fullItemName };
+            const activeProducts = products.filter(p => p.visible !== false).sort((a, b) => (b.priority || 5) - (a.priority || 5));
 
-    try {
-        // Отправляем ВСЕ данные на наш безопасный API
-        const response = await fetch('/api/submit', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ 
-                message: tgMsg,      // Для Телеграма
-                sheetData: sheetData // Для Гугл Таблицы
-            }) 
-        });
+            activeProducts.forEach((p, index) => {
+                const name = currentLang === 'ro' ? p.nameRO : p.nameRU;
+                const desc = currentLang === 'ro' ? p.descRO : p.descRU;
+                const btnText = uiTexts[currentLang].btn_details; 
+                const img = p.images[0];
+                const size = p.sizes.find(s => s.visible) || p.sizes[0];
+                
+                let priceHTML = '';
+                if (size.old_price && size.old_price > size.price) {
+                     priceHTML = `<div class="flex flex-col items-end leading-none"><span class="text-xs text-gray-400 line-through">${size.old_price} MDL</span><span class="text-lg font-bold text-red-500">${size.price} MDL</span></div>`;
+                } else {
+                     priceHTML = `<span class="text-lg font-bold text-gray-600">${size.price} MDL</span>`;
+                }
 
-        if (!response.ok) throw new Error('Failed to send');
+                let badgeHTML = '';
+                if (p.tag && tagTranslations[currentLang][p.tag]) {
+                    const tagName = tagTranslations[currentLang][p.tag];
+                    let bgClass = 'bg-red-500'; 
+                    if(p.tag === 'new') bgClass = 'bg-emerald-500';
+                    if(p.tag === 'hit') bgClass = 'bg-orange-500';
+                    badgeHTML = `<div class="absolute top-3 left-3 ${bgClass} text-white text-[10px] font-extrabold px-3 py-1 rounded-full shadow-md z-10 uppercase tracking-widest animate-pulse">${tagName}</div>`;
+                }
 
-        alert(currentLang === 'ro' ? "Cererea a fost trimisă cu succes!" : "Заявка успешно отправлена!");
-        closeModal('orderModal');
-        e.target.reset();
+                let arrowsHTML = '';
+                if (p.images.length > 1) {
+                    arrowsHTML = `<div class="slider-arrow slider-prev" onclick="changeCardImage(event, ${p.id}, -1)"><i class="fa-solid fa-chevron-left"></i></div><div class="slider-arrow slider-next" onclick="changeCardImage(event, ${p.id}, 1)"><i class="fa-solid fa-chevron-right"></i></div>`;
+                }
 
-    } catch (err) {
-        alert('Error sending order / Eroare la trimitere');
-        console.error(err);
-    } finally {
-        btn.innerText = originalText;
-        btn.disabled = false;
-    }
-}
+                const cardHTML = `
+                    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden group flex flex-col h-full hover:shadow-xl transition duration-300">
+                        <div class="relative w-full aspect-square bg-gray-50 overflow-hidden cursor-pointer" onclick="openProduct(${p.id})">
+                             ${badgeHTML} ${arrowsHTML}
+                             <img id="card-img-${p.id}" src="${img}" data-index="0" class="w-full h-full object-cover transition duration-500">
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <h3 class="text-xl font-bold mb-2 text-gray-800 leading-tight cursor-pointer hover:text-glowy transition" onclick="openProduct(${p.id})">${name}</h3>
+                            <p class="text-sm text-gray-500 mb-4 line-clamp-2 h-10 leading-relaxed">${desc}</p>
+                            <div class="mt-auto flex justify-between items-center border-t border-gray-100 pt-4">
+                                ${priceHTML} 
+                                <button onclick="openProduct(${p.id})" class="text-glowy font-bold text-sm hover:text-glowy-dark transition flex items-center gap-2 group-btn">${btnText} <i class="fa-solid fa-arrow-right transform group-btn-hover:translate-x-1 transition"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                if (index < 6) bestGrid.insertAdjacentHTML('beforeend', cardHTML);
+                else fullGrid.insertAdjacentHTML('beforeend', cardHTML);
+            });
+            
+            const container = document.getElementById('catalogBtnContainer');
+            if(container) container.style.display = activeProducts.length <= 6 ? 'none' : 'block';
+        }
 
-        init();
+        function changeCardImage(event, productId, direction) {
+            event.stopPropagation();
+            const p = products.find(x => x.id === productId);
+            const imgEl = document.getElementById(`card-img-${productId}`);
+            let idx = parseInt(imgEl.getAttribute('data-index')) || 0;
+            idx += direction;
+            if (idx < 0) idx = p.images.length - 1;
+            if (idx >= p.images.length) idx = 0;
+            imgEl.src = p.images[idx];
+            imgEl.setAttribute('data-index', idx);
+        }
+
+        function toggleFullCatalog() {
+            const grid = document.getElementById('full-catalog-grid');
+            const btn = document.querySelector('#catalogBtn span:nth-child(2)');
+            if (grid.classList.contains('hidden')) {
+                grid.classList.remove('hidden');
+                grid.classList.add('animate-fade-in-up');
+                btn.innerHTML = currentLang === 'ro' ? 'Ascunde' : 'Скрыть';
+            } else {
+                grid.classList.add('hidden');
+                grid.classList.remove('animate-fade-in-up');
+                btn.innerHTML = currentLang === 'ro' ? 'Arată tot' : 'Показать всё';
+                document.getElementById('catalog').scrollIntoView({behavior: 'smooth'});
+            }
+        }
+
+        function openProduct(id) {
+            const p = products.find(x => x.id === id);
+            currentProduct = p;
+            currentModalImageIndex = 0;
+            
+            const name = currentLang === 'ro' ? p.nameRO : p.nameRU;
+            const desc = currentLang === 'ro' ? p.descRO : p.descRU;
+            
+            document.getElementById('mTitle').innerText = name;
+            document.getElementById('mDesc').innerText = desc;
+            updateModalDisplay();
+
+            const thumbCont = document.getElementById('mThumbnails');
+            thumbCont.innerHTML = '';
+            if(p.images.length > 1) {
+                p.images.forEach((img, idx) => {
+                    const t = document.createElement('img');
+                    t.src = img;
+                    t.className = `w-16 h-16 object-cover rounded-md thumb ${idx===0?'active':''}`;
+                    t.onclick = () => { currentModalImageIndex = idx; updateModalDisplay(); };
+                    thumbCont.appendChild(t);
+                });
+                document.getElementById('modalArrows').classList.remove('hidden');
+            } else {
+                document.getElementById('modalArrows').classList.add('hidden');
+            }
+            
+            const sizeCont = document.getElementById('sizeContainer');
+            sizeCont.innerHTML = '';
+            p.sizes.filter(s => s.visible).forEach((size, idx) => {
+                const btn = document.createElement('button');
+                btn.className = `size-btn px-4 py-2 rounded-lg text-sm font-bold transition shadow-sm ${idx===0 ? 'active' : ''}`;
+                btn.innerText = size.label;
+                btn.onclick = () => selectSize(size, btn);
+                sizeCont.appendChild(btn);
+                if(idx === 0) selectSize(size, btn);
+            });
+
+            const actionBtn = document.getElementById('modalActionBtn');
+            actionBtn.onclick = function() {
+                 closeModal('productModal');
+                 openContactPopup(p.id, selectedSizeLabel, currentPrice);
+            };
+            document.getElementById('productModal').classList.remove('hidden');
+        }
+
+        function updateModalDisplay() {
+            const imgEl = document.getElementById('mImg');
+            imgEl.src = currentProduct.images[currentModalImageIndex];
+            const thumbs = document.querySelectorAll('#mThumbnails .thumb');
+            thumbs.forEach((t, i) => {
+                if(i === currentModalImageIndex) t.classList.add('active');
+                else t.classList.remove('active');
+            });
+        }
+
+        function changeModalImage(dir) {
+            currentModalImageIndex += dir;
+            if(currentModalImageIndex < 0) currentModalImageIndex = currentProduct.images.length - 1;
+            if(currentModalImageIndex >= currentProduct.images.length) currentModalImageIndex = 0;
+            updateModalDisplay();
+        }
+
+        function selectSize(size, btn) {
+            currentPrice = size.price;
+            selectedSizeLabel = size.label;
+            const priceContainer = document.getElementById('mPriceContainer');
+            if (size.old_price && size.old_price > size.price) {
+                priceContainer.innerHTML = `<span class="text-xl text-gray-400 line-through mr-2">${size.old_price} MDL</span><span class="text-3xl font-bold text-red-500">${size.price} MDL</span>`;
+            } else {
+                priceContainer.innerHTML = `<span class="text-3xl font-bold text-glowy">${size.price} MDL</span>`;
+            }
+            document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+            if(btn) btn.classList.add('active');
+        }
+
+        function closeModal(id) { document.getElementById(id).classList.add('hidden'); }
+
+        function openContactPopup(prodId, sizeLabel = '', price = 0) {
+            let infoText = "", messageText = "";
+            
+            // Set values for global vars used in Form
+            if (prodId) {
+                if (typeof prodId === 'string' && prodId.startsWith('Promo')) {
+                   tempSelectedProduct = { name: prodId };
+                   infoText = prodId;
+                   messageText = prodId;
+                } else {
+                   const p = products.find(x => x.id === prodId);
+                   const name = currentLang === 'ro' ? p.nameRO : p.nameRU;
+                   tempSelectedProduct = { name: name };
+                   infoText = `${name}`;
+                   messageText = `${name} (${sizeLabel}) - ${price} MDL`;
+                }
+            } else {
+                tempSelectedProduct = { name: (currentLang==='ro' ? "Întrebare generală" : "Общий вопрос") };
+                infoText = currentLang === 'ro' ? "Întrebare generală" : "Вопрос менеджеру";
+                messageText = infoText;
+            }
+            
+            document.getElementById('formSize').value = sizeLabel || ''; // Store size
+            document.getElementById('contactProductInfo').innerText = infoText;
+            updatePopupLinks(messageText);
+            document.getElementById('contactModal').classList.remove('hidden');
+        }
+
+        function updatePopupLinks(subject) {
+            const phone = "37361209209"; 
+            let msg = "";
+            if(currentLang === 'ro') {
+                msg = `Salut! Mă interesează: ${subject}. Aveți în stoc?`;
+            } else {
+                msg = `Здравствуйте! Меня интересует: ${subject}. Есть в наличии?`;
+            }
+            const enc = encodeURIComponent(msg);
+            document.getElementById('popWA').href = `https://wa.me/${phone}?text=${enc}`;
+            document.getElementById('popTG').href = `https://t.me/+${phone}`; 
+            document.getElementById('popVB').href = `viber://chat?number=%2B${phone}`;
+        }
+
+        function openOrderFormFromPopup() {
+            document.getElementById('contactModal').classList.add('hidden');
+            openOrderModal();
+        }
+
+        function openOrderModal() {
+            const subject = tempSelectedProduct ? tempSelectedProduct.name : "Contact";
+            document.getElementById('displayProduct').innerText = subject;
+            document.getElementById('formSubject').value = subject;
+            document.getElementById('orderModal').classList.remove('hidden');
+        }
+
+        // --- SUBMIT LOGIC (USER PROVIDED) ---
+ async function submitForm(e) {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            const originalText = btn.innerText;
+            
+            // 1. Визуальная обратная связь
+            btn.innerText = (currentLang === 'ro' ? "Se trimite..." : "Отправка...");
+            btn.disabled = true;
+
+            // 2. Сбор данных из полей
+            // currentPrice, tempSelectedProduct определены глобально в скрипте выше
+            const productBaseName = tempSelectedProduct ? tempSelectedProduct.name : "Contact";
+            // Если выбрана конкретная опция в модалке товара, добавляем размер
+            const fullProductName = selectedSizeLabel 
+                ? `${productBaseName} [${selectedSizeLabel}]` 
+                : productBaseName;
+
+            const name = document.getElementById('inpName').value;
+            const phone = document.getElementById('inpPhone').value;
+            const address = document.getElementById('inpAddress').value || "-";
+
+            // 3. Формирование сообщения для Telegram (Markdown формат, т.к. в submit.js стоит Markdown)
+            // Испольузем *жирный* вместо <b>жирный</b>
+            const tgMessage = 
+`🚀 *NOUĂ COMANDĂ!* (Site)
+
+📦 *Produs:* ${fullProductName}
+💰 *Preț:* ${currentPrice} MDL
+👤 *Nume:* ${name}
+📞 *Telefon:* ${phone}
+💬 *Comentariu:* ${address}`;
+
+            // 4. Формирование данных для Google Sheets
+            const sheetData = {
+                Date: new Date().toLocaleString("ru-RU"), // Дата в читаемом формате
+                Product: fullProductName,
+                Price: currentPrice,
+                Name: name,
+                Phone: phone,
+                Message: address
+            };
+
+            try {
+                // 5. Отправка на ваш безопасный бэкенд (/api/submit)
+                const response = await fetch('/api/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: tgMessage,  // Текст для телеграма
+                        sheetData: sheetData // Объект для таблицы
+                    })
+                });
+
+                const result = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(result.error || 'Server Error');
+                }
+
+                // 6. Успех
+                alert(currentLang === 'ro' ? "Mesajul a fost trimis cu succes!" : "Сообщение успешно отправлено!");
+                closeModal('orderModal');
+                e.target.reset(); // Очистить форму
+
+            } catch (error) {
+                console.error('Submission error:', error);
+                alert(currentLang === 'ro' 
+                    ? "Eroare la expediere. Vă rugăm să ne scrieți pe WhatsApp." 
+                    : "Ошибка отправки. Пожалуйста, напишите нам в WhatsApp.");
+            } finally {
+                // 7. Возврат кнопки в исходное состояние
+                btn.innerText = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        const params = new URLSearchParams(window.location.search);
+        changeLang(params.get('lang') || 'ro');
     </script>
 </body>
 </html>
