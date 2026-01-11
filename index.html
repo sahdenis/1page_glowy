@@ -585,80 +585,70 @@
             document.getElementById('orderModal').classList.remove('hidden');
         }
 
-        // --- SUBMIT LOGIC (USER PROVIDED) ---
- async function submitForm(e) {
+        // --- SUBMIT LOGIC (VIA VERCEL API) ---
+        async function submitForm(e) {
             e.preventDefault();
             const btn = document.getElementById('submitBtn');
             const originalText = btn.innerText;
             
-            // 1. Визуальная обратная связь
             btn.innerText = (currentLang === 'ro' ? "Se trimite..." : "Отправка...");
             btn.disabled = true;
 
-            // 2. Сбор данных из полей
-            // currentPrice, tempSelectedProduct определены глобально в скрипте выше
-            const productBaseName = tempSelectedProduct ? tempSelectedProduct.name : "Contact";
-            // Если выбрана конкретная опция в модалке товара, добавляем размер
-            const fullProductName = selectedSizeLabel 
-                ? `${productBaseName} [${selectedSizeLabel}]` 
-                : productBaseName;
-
+            // 1. Сбор данных
             const name = document.getElementById('inpName').value;
             const phone = document.getElementById('inpPhone').value;
-            const address = document.getElementById('inpAddress').value || "-";
+            const email = document.getElementById('inpEmail').value || '-';
+            const address = document.getElementById('inpAddress').value || '-';
+            const topic = document.getElementById('formSubject').value;
+            const size = document.getElementById('formSize').value;
 
-            // 3. Формирование сообщения для Telegram (Markdown формат, т.к. в submit.js стоит Markdown)
-            // Испольузем *жирный* вместо <b>жирный</b>
-            const tgMessage = 
-`🚀 *NOUĂ COMANDĂ!* (Site)
+            // Полное название товара
+            const fullItemName = size ? `${topic} [${size}]` : topic;
 
-📦 *Produs:* ${fullProductName}
+            // 2. Данные для Telegram (Текст)
+            const tgMsg = `🚀 *NOUĂ COMANDĂ!* (Site)
+
+📦 *Produs:* ${fullItemName}
 💰 *Preț:* ${currentPrice} MDL
 👤 *Nume:* ${name}
 📞 *Telefon:* ${phone}
-💬 *Comentariu:* ${address}`;
+📧 *Email:* ${email}
+📍 *Adresă:* ${address}`;
 
-            // 4. Формирование данных для Google Sheets
+            // 3. Данные для Google Sheets (Объект)
             const sheetData = {
-                Date: new Date().toLocaleString("ru-RU"), // Дата в читаемом формате
-                Product: fullProductName,
+                Date: new Date().toLocaleString(),
+                Product: fullItemName,
                 Price: currentPrice,
                 Name: name,
                 Phone: phone,
+                Email: email,
                 Message: address
             };
 
             try {
-                // 5. Отправка на ваш безопасный бэкенд (/api/submit)
+                // ОТПРАВЛЯЕМ ЗАПРОС НА ВАШ VERCEL API
                 const response = await fetch('/api/submit', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        message: tgMessage,  // Текст для телеграма
-                        sheetData: sheetData // Объект для таблицы
-                    })
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ 
+                        message: tgMsg,      // Уходит в ТГ
+                        sheetData: sheetData // Уходит в Таблицу
+                    }) 
                 });
 
-                const result = await response.json();
+                if (!response.ok) throw new Error('Server Failed');
 
-                if (!response.ok) {
-                    throw new Error(result.error || 'Server Error');
-                }
-
-                // 6. Успех
-                alert(currentLang === 'ro' ? "Mesajul a fost trimis cu succes!" : "Сообщение успешно отправлено!");
+                alert(currentLang === 'ro' ? "Cererea a fost trimisă cu succes!" : "Заявка успешно отправлена!");
                 closeModal('orderModal');
-                e.target.reset(); // Очистить форму
+                e.target.reset();
 
-            } catch (error) {
-                console.error('Submission error:', error);
+            } catch (err) {
+                console.error("Submission Error:", err);
                 alert(currentLang === 'ro' 
-                    ? "Eroare la expediere. Vă rugăm să ne scrieți pe WhatsApp." 
-                    : "Ошибка отправки. Пожалуйста, напишите нам в WhatsApp.");
+                    ? "Eroare. Vă rugăm să ne contactați telefonic." 
+                    : "Ошибка. Пожалуйста, свяжитесь с нами по телефону.");
             } finally {
-                // 7. Возврат кнопки в исходное состояние
                 btn.innerText = originalText;
                 btn.disabled = false;
             }
