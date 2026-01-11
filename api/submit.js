@@ -9,10 +9,9 @@ export default async function handler(req, res) {
   }
 
   const { message, sheetData } = req.body;
-
   const tasks = [];
 
-  // --- 1. Telegram (Оставляем JSON) ---
+  // --- Telegram ---
   const tgPromise = fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -24,22 +23,16 @@ export default async function handler(req, res) {
   });
   tasks.push(tgPromise);
 
-  // --- 2. Google Sheets (МЕНЯЕМ НА URLSearchParams) ---
-  // Это решает проблему пустых строк. Мы конвертируем объект в формат: Name=Ivan&Phone=123...
+  // --- Google Sheets ---
   if (GOOGLE_URL && sheetData) {
-    // Превращаем объект в параметры
-    const params = new URLSearchParams();
-    for (const key in sheetData) {
-      params.append(key, sheetData[key]);
-    }
-
     const sheetPromise = fetch(GOOGLE_URL, {
         method: "POST",
-        // Google Script обожает этот формат
-        headers: { "Content-Type": "application/x-www-form-urlencoded" },
-        body: params.toString(), 
+        // Отправляем как текст, чтобы избежать CORS и проблем с типами
+        headers: { "Content-Type": "text/plain;charset=utf-8" }, 
+        body: JSON.stringify(sheetData),
+        redirect: 'follow' // ВАЖНО: следовать за редиректом Google
     }).then(async (apiRes) => {
-        if (!apiRes.ok) console.warn(`Google Warning: ${apiRes.statusText}`);
+        if (!apiRes.ok) console.warn(`Google Error: ${apiRes.statusText}`);
         return apiRes;
     });
     tasks.push(sheetPromise);
@@ -49,7 +42,6 @@ export default async function handler(req, res) {
     await Promise.allSettled(tasks);
     return res.status(200).json({ success: true });
   } catch (error) {
-    console.error(error);
     return res.status(500).json({ error: error.message });
   }
 }
