@@ -1,20 +1,18 @@
 // api/submit.js
 export default async function handler(req, res) {
-  // 1. Читаем переменные окружения из Vercel
   const TG_TOKEN = process.env.TG_TOKEN_VAR;
   const TG_CHAT_ID = process.env.TG_CHAT_ID_VAR;
   const GOOGLE_URL = process.env.GOOGLE_SCRIPT_URL_VAR;
 
   if (!TG_TOKEN || !TG_CHAT_ID) {
-    return res.status(500).json({ error: 'Server configuration missing' });
+    return res.status(500).json({ error: 'Config missing' });
   }
 
-  // 2. Получаем данные от index.html
   const { message, sheetData } = req.body;
 
   const tasks = [];
 
-  // --- Задача A: Отправка в Telegram ---
+  // --- 1. Telegram (Оставляем JSON) ---
   const tgPromise = fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -23,24 +21,25 @@ export default async function handler(req, res) {
       text: message,
       parse_mode: 'Markdown'
     })
-  }).then(async (apiRes) => {
-      if (!apiRes.ok) throw new Error(`TG Error: ${apiRes.statusText}`);
-      return apiRes;
   });
   tasks.push(tgPromise);
 
-  // --- Задача B: Отправка в Google Sheets ---
-  if (GOOGLE_URL) {
+  // --- 2. Google Sheets (МЕНЯЕМ НА URLSearchParams) ---
+  // Это решает проблему пустых строк. Мы конвертируем объект в формат: Name=Ivan&Phone=123...
+  if (GOOGLE_URL && sheetData) {
+    // Превращаем объект в параметры
+    const params = new URLSearchParams();
+    for (const key in sheetData) {
+      params.append(key, sheetData[key]);
+    }
+
     const sheetPromise = fetch(GOOGLE_URL, {
         method: "POST",
-        body: JSON.stringify(sheetData),
-        // Меняем на application/json, так как Google Script теперь точно ждет JSON
-        headers: { "Content-Type": "text/plain;charset=utf-8" }, 
+        // Google Script обожает этот формат
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params.toString(), 
     }).then(async (apiRes) => {
-        // Google Script при успехе возвращает редирект или 200
-        if (!apiRes.ok && apiRes.status !== 302) {
-             console.warn(`Google Sheet Warning: ${apiRes.statusText}`);
-        }
+        if (!apiRes.ok) console.warn(`Google Warning: ${apiRes.statusText}`);
         return apiRes;
     });
     tasks.push(sheetPromise);
