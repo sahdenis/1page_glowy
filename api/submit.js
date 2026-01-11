@@ -31,15 +31,16 @@ export default async function handler(req, res) {
 
   // --- Задача B: Отправка в Google Sheets ---
   if (GOOGLE_URL) {
-    // Google Script (updated) ждет JSON
     const sheetPromise = fetch(GOOGLE_URL, {
         method: "POST",
         body: JSON.stringify(sheetData),
-        // Важно: text/plain позволяет избежать лишних CORS проверок со стороны Google
-        headers: { "Content-Type": "text/plain;charset=utf-8" }, 
+        // Меняем на application/json, так как Google Script теперь точно ждет JSON
+        headers: { "Content-Type": "application/json" }, 
     }).then(async (apiRes) => {
-        // Google Script часто возвращает 302 redirect, fetch следует за ним автоматически
-        if (!apiRes.ok) console.warn(`Google Sheet Warning: ${apiRes.statusText}`);
+        // Google Script при успехе возвращает редирект или 200
+        if (!apiRes.ok && apiRes.status !== 302) {
+             console.warn(`Google Sheet Warning: ${apiRes.statusText}`);
+        }
         return apiRes;
     });
     tasks.push(sheetPromise);
