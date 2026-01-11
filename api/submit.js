@@ -1,68 +1,113 @@
-var SHEET_NAME = "Sheet1";
+// api/submit.js
 
-function doPost(e) {
-  var lock = LockService.getScriptLock();
-  lock.tryLock(10000);
+// ИСПОЛЬЗУЕМ module.exports ВМЕСТО export default
+module.exports = async (req, res) => {
+  
+  // 0. Настройка CORS (чтобы браузер не блокировал запросы)
+  res.setHeader('Access-Control-Allow-Credentials', true);
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version'
+  );
 
-  // Сразу получаем лист, чтобы иметь возможность записать ошибку
-  var doc = SpreadsheetApp.getActiveSpreadsheet();
-  var sheet = doc.getSheetByName(SHEET_NAME);
+  // Если это предварительный запрос (OPTIONS), сразу отвечаем ОК
+  if (req.method === 'OPTIONS') {
+    res.status(200).end();
+    return;
+  }
 
   try {
-    // 1. СМОТРИМ, ЧТО ПРИШЛО (Чтение данных)
-    var data = {};
-    
-    // Если пришел JSON (самый частый вариант от Vercel)
-    if (e.postData && e.postData.contents) {
-      try {
-        var parsed = JSON.parse(e.postData.contents);
-        // Проверяем, вложены ли данные или они "плоские"
-        data = parsed.sheetData ? parsed.sheetData : parsed;
-      } catch (jsonErr) {
-        // Если не JSON, пробуем считать как обычный текст (на всякий случай)
-        console.log("Not JSON");
-      }
-    } 
-    
-    // Если data всё еще пустая, пробуем параметры URL
-    if (Object.keys(data).length === 0 && e.parameter) {
-      data = e.parameter;
+    // 1. Проверяем переменные окружения
+    const TG_TOKEN = process.env.TG_TOKEN_VAR;
+    const TG_CHAT_ID = process.env.TG_CHAT_ID_VAR;
+    const GOOGLE_URL = process.env.GOOGLE_SCRIPT_URL_VAR;
+
+    if (!TG_TOKEN || !TG_CHAT_ID) {
+      console.error("Missing ENV variables");
+      return res.status(500).json({ 
+        error: 'Config Error', 
+        details: 'TG_TOKEN_VAR or TG_CHAT_ID_VAR is missing in Vercel Settings' 
+      });
     }
 
-    // 2. ПОДГОТОВКА СТРОКИ
-    var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
-    var nextRow = sheet.getLastRow() + 1;
-
-    var newRow = headers.map(function(header) {
-      if (header === 'Date') return new Date();
-      // Ищем значение. Если ключа нет, пишем пустую строку, НО не null
-      return data[header] || "";
-    });
-
-    // 3. ЗАПИСЬ
-    sheet.getRange(nextRow, 1, 1, newRow.length).setValues([newRow]);
-
-    return ContentService
-      .createTextOutput(JSON.stringify({ 'result': 'success' }))
-      .setMimeType(ContentService.MimeType.JSON);
-
-  } catch (err) {
-    // === БЛОК ПЕРЕХВАТА ОШИБОК ===
-    // Если скрипт упал, мы запишем ошибку в таблицу, чтобы вы ее увидели
-    var errorRow = [new Date(), "ОШИБКА СКРИПТА", err.toString(), e ? JSON.stringify(e.postData) : "No Data", "", "", ""];
-    // Пытаемся записать хотя бы ошибку
-    sheet.appendRow(errorRow);
+    // 2. Безопасно парсим тело запроса
+    let body = req.body;
+    // Иногда Vercel передает body как строку, если заголовок не application/json
+    if (typeof body === 'string') {
+        try {
+            body = JSON.parse(body);
+        } catch (e) {
+            console.error("JSON Parse Error:", e);
+        }
+    }
     
-    return ContentService
-      .createTextOutput(JSON.stringify({ 'result': 'error', 'error': err.toString() }))
-      .setMimeType(ContentService.MimeType.JSON);
-  } finally {
-    lock.releaseLock();
-  }
-}
+    const { message, sheetData } = body || {};
 
-function setup() {
-  // Заголовки (запустите один раз, если их нет)
-  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(SHEET_NAME);
-  sheet.getRange(1, 1, 1, 7).setValues([["Date", "Product", "Price", "Name", "Phone", "Email", "Message"]]);
-}
+    if (!message && !sheetData) {
+        return res.status(400).json({ error: 'No data provided' });
+    }
+
+    const errors = [];
+
+    // --- 3. Telegram ---
+    if (message) {
+        try {
+            const tgRes = await fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: TG_CHAT_ID,
+                    text: message,
+                    parse_mode: 'Markdown'
+                })
+            });
+            
+            if (!tgRes.ok) {
+                const errText = await tgRes.text();
+                console.error("TG Error:", errText);
+                errors.push(`Telegram: ${tgRes.status} ${errText}`);
+            }
+        } catch (e) {
+            console.error("TG Network Error:", e);
+            errors.push(`Telegram Net: ${e.message}`);
+        }
+    }
+
+    // --- 4. Google Sheets ---
+    if (GOOGLE_URL && sheetData) {
+        try {
+            // Отправляем как JSON. Убедитесь, что Google Script обновлен (см. предыдущие шаги)
+            const sheetRes = await fetch(GOOGLE_URL, {
+                method: "POST",
+                headers: { "Content-Type": "text/plain;charset=utf-8" },
+                body: JSON.stringify(sheetData),
+                redirect: 'follow'
+            });
+            
+            if (!sheetRes.ok) {
+                console.error("Google Error:", sheetRes.status);
+                errors.push(`Google: ${sheetRes.status}`);
+            }
+        } catch (e) {
+            console.error("Google Network Error:", e);
+            errors.push(`Google Net: ${e.message}`);
+        }
+    }
+
+    // --- 5. Результат ---
+    if (errors.length > 0) {
+        return res.status(500).json({ success: false, errors: errors });
+    }
+
+    return res.status(200).json({ success: true });
+
+  } catch (criticalError) {
+    console.error("CRITICAL CRASH:", criticalError);
+    return res.status(500).json({ 
+        error: 'Critical Function Error', 
+        message: criticalError.message 
+    });
+  }
+};
