@@ -35,7 +35,7 @@ export default async function handler(req, res) {
         method: "POST",
         body: JSON.stringify(sheetData),
         // Меняем на application/json, так как Google Script теперь точно ждет JSON
-        headers: { "Content-Type": "application/json" }, 
+        headers: { "Content-Type": "text/plain;charset=utf-8" }, 
     }).then(async (apiRes) => {
         // Google Script при успехе возвращает редирект или 200
         if (!apiRes.ok && apiRes.status !== 302) {
