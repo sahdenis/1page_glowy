@@ -1,0 +1,44 @@
+{
+  "redirects": [
+    {
+      "source": "/index.php",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/despre-noi",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/ru/(.*)",
+      "destination": "/?lang=ru",
+      "permanent": true
+    },
+    {
+      "source": "/ro/(.*)",
+      "destination": "/?lang=ro",
+      "permanent": true
+    },
+    {
+      "source": "/content/(.*)",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/catalog/(.*)",
+      "destination": "/#catalog",
+      "permanent": true
+    },
+    {
+      "source": "/product/(.*)",
+      "destination": "/#catalog",
+      "permanent": true
+    }
+  ]
+}
