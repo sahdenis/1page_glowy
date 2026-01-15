@@ -46,7 +46,7 @@
       "permanent": true
     },
     {
-      "source": "/pled_tractor_127x152cm/",
+      "source": "ru/pled_tractor_127x152cm/",
       "destination": "?lang=ru&product=6&size=127+×+152cm",
       "permanent": true
     },
@@ -76,17 +76,17 @@
       "permanent": true
     },
     {
-      "source": "/sac-rucsac-cloud/",
+      "source": "ru/sac-rucsac-cloud/",
       "destination": "?lang=ru&product=22&size=Standard#catalog",
       "permanent": true
     },
     {
-      "source": "/patura-fosforescenta-unicorn2/",
+      "source": "ru/patura-fosforescenta-unicorn2/",
       "destination": "?lang=ru&product=19&size=127+×+152cm#catalog",
       "permanent": true
     },
     {
-      "source": "/patura-fosforescenta-ananas/",
+      "source": "ru/patura-fosforescenta-ananas/",
       "destination": "?lang=ru&product=1&size=127+×+152cm#catalog",
       "permanent": true
     },
@@ -96,12 +96,12 @@
       "permanent": true
     },
     {
-      "source": "/patura-luminescenta-cosmo/",
+      "source": "ru/patura-luminescenta-cosmo/",
       "destination": "?lang=ru&product=21&size=127+×+152cm#catalog",
       "permanent": true
     },
     {
-      "source": "/patura-fosforescenta-icecream/",
+      "source": "ru/patura-fosforescenta-icecream/",
       "destination": "?lang=ru&product=7&size=127+×+152cm#catalog",
       "permanent": true
     }
