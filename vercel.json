@@ -39,11 +39,6 @@
       "source": "/product/(.*)",
       "destination": "/#catalog",
       "permanent": true
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/#catalog",
-      "permanent": true
     }
   ]
 }
