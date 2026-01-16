@@ -42,67 +42,67 @@
     },
     {
       "source": "/pleduri/",
-      "destination": "?lang=ru#catalog",
+      "destination": "/?lang=ru#catalog",
       "permanent": true
     },
     {
-      "source": "ru/pled_tractor_127x152cm/",
-      "destination": "?lang=ru&product=6&size=127+×+152cm",
+      "source": "ru/pled_tractor_127x152cm",
+      "destination": "/?lang=ru&product=6&size=127+×+152cm",
       "permanent": true
     },
     {
-      "source": "/blog/",
-      "destination": "?lang=ru#catalog",
+      "source": "/blog",
+      "destination": "/?lang=ru#catalog",
       "permanent": true
     },
     {
-      "source": "rucsac/",
-      "destination": "?lang=ru#catalog",
+      "source": "rucsac",
+      "destination": "/?lang=ru#catalog",
       "permanent": true
     },
     {
-      "source": "apple/",
-      "destination": "?lang=ru#catalog",
+      "source": "apple",
+      "destination": "/?lang=ru#catalog",
       "permanent": true
     },
     {
-      "source": "/kontaktna-informatsiya/",
-      "destination": "?lang=ru#contacts",
+      "source": "/kontaktna-informatsiya",
+      "destination": "/?lang=ru#contacts",
       "permanent": true
     },
     {
-      "source": "/plata-success/",
-      "destination": "?lang=ru#catalog",
+      "source": "/plata-success",
+      "destination": "/?lang=ru#catalog",
       "permanent": true
     },
     {
-      "source": "ru/sac-rucsac-cloud/",
-      "destination": "?lang=ru&product=22&size=Standard#catalog",
+      "source": "ru/sac-rucsac-cloud",
+      "destination": "/?lang=ru&product=22&size=Standard#catalog",
       "permanent": true
     },
     {
-      "source": "ru/patura-fosforescenta-unicorn2/",
-      "destination": "?lang=ru&product=19&size=127+×+152cm#catalog",
+      "source": "ru/patura-fosforescenta-unicorn2",
+      "destination": "/?lang=ru&product=19&size=127+×+152cm#catalog",
       "permanent": true
     },
     {
-      "source": "ru/patura-fosforescenta-ananas/",
-      "destination": "?lang=ru&product=1&size=127+×+152cm#catalog",
+      "source": "ru/patura-fosforescenta-ananas",
+      "destination": "/?lang=ru&product=1&size=127+×+152cm#catalog",
       "permanent": true
     },
     {
-      "source": "/obmin-ta-povernennya/",
-      "destination": "?lang=ru#catalog",
+      "source": "/obmin-ta-povernennya",
+      "destination": "/?lang=ru#catalog",
       "permanent": true
     },
     {
-      "source": "ru/patura-luminescenta-cosmo/",
-      "destination": "?lang=ru&product=21&size=127+×+152cm#catalog",
+      "source": "ru/patura-luminescenta-cosmo",
+      "destination": "/?lang=ru&product=21&size=127+×+152cm#catalog",
       "permanent": true
     },
     {
-      "source": "ru/patura-fosforescenta-icecream/",
-      "destination": "?lang=ru&product=7&size=127+×+152cm#catalog",
+      "source": "ru/patura-fosforescenta-icecream",
+      "destination": "/?lang=ru&product=7&size=127+×+152cm#catalog",
       "permanent": true
     }
   ]
