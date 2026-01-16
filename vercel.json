@@ -52,32 +52,32 @@
     },
     {
       "source": "/blog",
-      "destination": "/?lang=ru#catalog",
+      "destination": "/#catalog",
       "permanent": true
     },
     {
       "source": "rucsac",
-      "destination": "/?lang=ru#catalog",
+      "destination": "/#catalog",
       "permanent": true
     },
     {
       "source": "apple",
-      "destination": "/?lang=ru#catalog",
+      "destination": "/#catalog",
       "permanent": true
     },
     {
       "source": "/kontaktna-informatsiya",
-      "destination": "/?lang=ru#contacts",
+      "destination": "/#catalog",
       "permanent": true
     },
     {
       "source": "/plata-success",
-      "destination": "/?lang=ru#catalog",
+      "destination": "/#catalog",
       "permanent": true
     },
     {
       "source": "ru/sac-rucsac-cloud",
-      "destination": "/?lang=ru&product=22&size=Standard#catalog",
+      "destination": "/#catalog",
       "permanent": true
     },
     {
@@ -92,7 +92,7 @@
     },
     {
       "source": "/obmin-ta-povernennya",
-      "destination": "/?lang=ru#catalog",
+      "destination": "/#catalog",
       "permanent": true
     },
     {
