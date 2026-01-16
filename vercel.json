@@ -32,17 +32,17 @@
     },
     {
       "source": "/catalog/(.*)",
-      "destination": "/#catalog",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "/product/(.*)",
-      "destination": "/#catalog",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "/pleduri/",
-      "destination": "/?lang=ru#catalog",
+      "destination": "/",
       "permanent": true
     },
     {
@@ -52,22 +52,22 @@
     },
     {
       "source": "/blog",
-      "destination": "/#catalog",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "rucsac",
-      "destination": "/#catalog",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "apple",
-      "destination": "/#catalog",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "/kontaktna-informatsiya",
-      "destination": "/#catalog",
+      "destination": "/",
       "permanent": true
     },
     {
@@ -92,7 +92,7 @@
     },
     {
       "source": "/obmin-ta-povernennya",
-      "destination": "/#catalog",
+      "destination": "/",
       "permanent": true
     },
     {
